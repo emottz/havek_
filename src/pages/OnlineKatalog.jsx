@@ -81,7 +81,7 @@ const CoverPage = ({ products, lang }) => {
     <div className="ck-cover">
       <div className="ck-cover__main">
         <div className="ck-cover__top">
-          <img src={`${import.meta.env.BASE_URL}Beyaz_logo.png`} alt="HAVEK" className="ck-cover__logo" />
+          <img src="/Beyaz_logo.png" alt="HAVEK" className="ck-cover__logo" />
           <span className="ck-cover__year">2025</span>
         </div>
         <p className="ck-cover__tag">HAVEK</p>
@@ -119,7 +119,7 @@ const TOCPage = ({ products, lang }) => {
   return (
     <div className="ck-page">
       <div className="ck-header">
-        <img src={`${import.meta.env.BASE_URL}Beyaz_logo.png`} alt="HAVEK" className="ck-header__logo" />
+        <img src="/Beyaz_logo.png" alt="HAVEK" className="ck-header__logo" />
         <span className="ck-header__right">{lang === 'tr' ? 'İçindekiler' : 'Table of Contents'}</span>
       </div>
       <div className="ck-accent-bar" />
@@ -142,7 +142,7 @@ const TOCPage = ({ products, lang }) => {
         ))}
       </div>
       <div className="ck-footer">
-        <img src={`${import.meta.env.BASE_URL}Siyah_logo.png`} alt="HAVEK" className="ck-footer__logo" />
+        <img src="/Siyah_logo.png" alt="HAVEK" className="ck-footer__logo" />
         <span className="ck-footer__text">www.havek.tr</span>
       </div>
     </div>
@@ -173,7 +173,7 @@ const ProductPage = ({ product, lang, email }) => {
   return (
     <div className="ck-page">
       <div className="ck-header">
-        <img src={`${import.meta.env.BASE_URL}Beyaz_logo.png`} alt="HAVEK" className="ck-header__logo" />
+        <img src="/Beyaz_logo.png" alt="HAVEK" className="ck-header__logo" />
         <span className="ck-header__doc-label">
           {lang === 'tr' ? 'TEKNİK ÜRÜN FÖYÜ' : 'TECHNICAL DATA SHEET'}
         </span>
@@ -258,7 +258,7 @@ const ProductPage = ({ product, lang, email }) => {
       </div>
 
       <div className="ck-footer">
-        <img src={`${import.meta.env.BASE_URL}Siyah_logo.png`} alt="HAVEK" className="ck-footer__logo" />
+        <img src="/Siyah_logo.png" alt="HAVEK" className="ck-footer__logo" />
         <span className="ck-footer__text">www.havek.tr</span>
         <span className="ck-footer__text">
           {new Date().toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}
@@ -271,7 +271,7 @@ const ProductPage = ({ product, lang, email }) => {
 /* Arka kapak */
 const BackPage = ({ lang, email }) => (
   <div className="ck-back">
-    <img src={`${import.meta.env.BASE_URL}Beyaz_logo.png`} alt="HAVEK" className="ck-back__logo" />
+    <img src="/Beyaz_logo.png" alt="HAVEK" className="ck-back__logo" />
     <div className="ck-back__divider" />
     <h2 className="ck-back__title">
       {lang === 'tr' ? 'Bizimle İletişime Geçin' : 'Get In Touch'}

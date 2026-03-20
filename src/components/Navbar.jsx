@@ -35,7 +35,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="navbar-logo">
             <Link to="/">
-              <img src={`${import.meta.env.BASE_URL}newlogo01.png`} alt="HAVEK Logo" className="logo-img" />
+              <img src="/newlogo01.png" alt="HAVEK Logo" className="logo-img" />
             </Link>
           </div>
 

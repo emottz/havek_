@@ -33,7 +33,7 @@ const AdminLogin = () => {
     <div className="admin-login-page">
       <div className="admin-login-card">
         <div className="admin-login-logo">
-          <img src={`${import.meta.env.BASE_URL}newlogo01.png`} alt="HAVEK" />
+          <img src="/newlogo01.png" alt="HAVEK" />
         </div>
         <h1 className="admin-login-title">Admin Girişi</h1>
         <form onSubmit={handleLogin} className="admin-login-form">
