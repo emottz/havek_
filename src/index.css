@@ -119,7 +119,7 @@ button {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding-top: 78px;
+  padding-top: 68px;
 }
 
 /* .bg-decor removed — flat background does not need decorative blobs */
