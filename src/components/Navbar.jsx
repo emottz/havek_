@@ -21,7 +21,7 @@ const Navbar = () => {
   }, [location]);
 
   const isEgitimActive =
-    location.pathname.startsWith('/egitim-seti') ||
+    location.pathname.startsWith('/egitim-setleri') ||
     location.pathname === '/atolye-egitim-setleri' ||
     location.pathname === '/ata-chapter-egitim-setleri';
 
