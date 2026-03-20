@@ -45,7 +45,7 @@ const Navbar = () => {
               to="/simulatorler"
               className={`nav-link ${location.pathname === '/simulatorler' ? 'active' : ''}`}
             >
-              Simülatörler
+              Simülatör
             </Link>
 
             <div
@@ -54,17 +54,17 @@ const Navbar = () => {
               onMouseLeave={() => setDropdownOpen(false)}
             >
               <span className={`nav-link nav-link--dropdown ${isEgitimActive ? 'active' : ''}`}>
-                Eğitim Setleri
+                Eğitim Seti
                 <svg className="dropdown-chevron" viewBox="0 0 10 6" fill="none">
                   <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </span>
               <div className={`dropdown-menu ${dropdownOpen ? 'open' : ''}`}>
                 <Link to="/atolye-egitim-setleri" className="dropdown-item" onClick={() => setDropdownOpen(false)}>
-                  Atölye Eğitim Setleri
+                  Eğitim Setleri
                 </Link>
                 <Link to="/ata-chapter-egitim-setleri" className="dropdown-item" onClick={() => setDropdownOpen(false)}>
-                  ATA Chapter Bazlı Eğitim Setleri
+                  ATA Chapter Bazlı Setler
                 </Link>
               </div>
             </div>
@@ -80,7 +80,7 @@ const Navbar = () => {
               to="/online-katalog"
               className={`nav-link ${location.pathname === '/online-katalog' ? 'active' : ''}`}
             >
-              Online Katalog
+              Katalog
             </Link>
           </nav>
 
@@ -103,14 +103,14 @@ const Navbar = () => {
       {/* Mobile menu */}
       <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`}>
         <nav className="mobile-nav">
-          <Link to="/simulatorler" className="mobile-link">Simülatörler</Link>
+          <Link to="/simulatorler" className="mobile-link">Simülatör</Link>
           <div className="mobile-group">
-            <span className="mobile-group__label">Eğitim Setleri</span>
-            <Link to="/atolye-egitim-setleri" className="mobile-link mobile-link--sub">Atölye Eğitim Setleri</Link>
-            <Link to="/ata-chapter-egitim-setleri" className="mobile-link mobile-link--sub">ATA Chapter Bazlı</Link>
+            <span className="mobile-group__label">Eğitim Seti</span>
+            <Link to="/atolye-egitim-setleri" className="mobile-link mobile-link--sub">Eğitim Setleri</Link>
+            <Link to="/ata-chapter-egitim-setleri" className="mobile-link mobile-link--sub">ATA Chapter Bazlı Setler</Link>
           </div>
           <Link to="/havacilik-cozumleri" className="mobile-link">Havacılık Çözümleri</Link>
-          <Link to="/online-katalog" className="mobile-link">Online Katalog</Link>
+          <Link to="/online-katalog" className="mobile-link">Katalog</Link>
           <Link to="/iletisim" className="mobile-cta">Bize Ulaşın</Link>
         </nav>
       </div>
