@@ -65,7 +65,6 @@ const Home = () => {
 
   return (
     <div className="home-page">
-      <div style={{background:'red',color:'white',textAlign:'center',padding:'1rem',fontSize:'2rem',fontWeight:'bold'}}>DENEME</div>
       <section className="hero-section">
         <HeroSlider />
       </section>
