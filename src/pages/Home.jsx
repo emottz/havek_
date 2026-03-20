@@ -71,7 +71,7 @@ const Home = () => {
       
       <div className="cat-section">
         <div className="section-header">
-          <h2 className="section-title">Ürün Kategorilerimiz</h2>
+          <h2 className="section-title">ÜRÜN KATEGORİLERİMİZ</h2>
           <div className="title-underline"></div>
         </div>
         <div className="cat-grid">
