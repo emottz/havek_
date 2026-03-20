@@ -18,7 +18,7 @@ const SLIDES = [
     eyebrow: 'Simülasyon Teknolojileri',
     title: 'SİMÜLATÖRLER',
     desc: 'FAA ve EASA düzenlemelerine uygun profesyonel simülasyon altyapısı. Gerçek uçuş koşullarını güvenli ortamda yeniden üretin.',
-    img: '/slide02.png',
+    img: '/slide02yeni.png',
     cta: 'Simülatörleri İncele',
     href: '/simulatorler',
   },
