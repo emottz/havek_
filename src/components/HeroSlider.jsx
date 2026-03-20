@@ -8,7 +8,7 @@ const SLIDES = [
     id: 1,
     eyebrow: 'Uygulamalı Havacılık Eğitimi',
     title: 'Sivil Havacılığın\nTemeli: Eğitim Setleri',
-    desc: 'ICAO ve EASA standartlarına uyumlu, gerçek ekipmanlarla donatılmış eğitim setleri. Teknisyenlerinizin arıza analizi ve bakım süreçlerinde uluslararası yeterlilik kazanmasını sağlıyoruz.',
+    desc: 'FAA ve EASA standartlarına uyumlu, gerçek ekipmanlarla donatılmış eğitim setleri. Teknisyenlerinizin arıza analizi ve bakım süreçlerinde uluslararası yeterlilik kazanmasını sağlıyoruz.',
     img: '/slide01.png',
     cta: 'Eğitim Setlerini Keşfet',
     href: '/egitim-setleri',
@@ -16,7 +16,7 @@ const SLIDES = [
   {
     id: 2,
     eyebrow: 'Simülasyon Teknolojileri',
-    title: 'Uçuş Simülatörleri &\nRüzgar Tünelleri',
+    title: 'SİMÜLATÖRLER',
     desc: 'FAA ve EASA düzenlemelerine uygun profesyonel simülasyon altyapısı. Gerçek uçuş koşullarını güvenli ortamda yeniden üretin.',
     img: '/slide02.png',
     cta: 'Simülatörleri İncele',
