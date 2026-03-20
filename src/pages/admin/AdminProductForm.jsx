@@ -43,7 +43,27 @@ const AdminProductForm = () => {
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
   const [translating, setTranslating] = useState(false)
+  const [formatting, setFormatting] = useState(false)
   const { upload, remove, uploading, uploadError, setUploadError } = useImageUpload()
+
+  const handleFormatDescription = async () => {
+    if (!form.description?.trim()) return
+    setFormatting(true)
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      const res = await supabase.functions.invoke('format-description', {
+        body: { text: form.description, title: form.title },
+        headers: { Authorization: `Bearer ${session.access_token}` }
+      })
+      if (res.data?.formatted) {
+        setForm(f => ({ ...f, description: res.data.formatted }))
+      }
+    } catch (e) {
+      console.error(e)
+    } finally {
+      setFormatting(false)
+    }
+  }
 
   const handleAutoTranslate = async () => {
     if (!form.description && !form.title) return
@@ -196,6 +216,22 @@ const AdminProductForm = () => {
           <div className="admin-field admin-field--full">
             <label>Açıklama (TR)</label>
             <textarea value={form.description} onChange={set('description')} rows={6} placeholder="Ürün açıklaması..." />
+          </div>
+
+          {/* AI Format button */}
+          <div className="admin-field admin-field--full" style={{ paddingTop: 4 }}>
+            <button
+              type="button"
+              className="admin-btn-outline"
+              onClick={handleFormatDescription}
+              disabled={formatting || !form.description?.trim()}
+              style={{ width: 'fit-content' }}
+            >
+              {formatting ? '⏳ Düzenleniyor...' : '✨ AI ile Düzenle'}
+            </button>
+            <small style={{ color: '#64748b', marginTop: 4, display: 'block' }}>
+              Gemini AI ham metni başlık ve maddelere dönüştürür. Sonucu düzenleyebilirsiniz.
+            </small>
           </div>
 
           {/* Auto-translate button */}
