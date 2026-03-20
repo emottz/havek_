@@ -1,0 +1,82 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.preloader--out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preloader__logo-container {
+  width: 80%;
+  max-width: 500px;
+}
+
+.preloader__svg {
+  width: 100%;
+  height: auto;
+}
+
+/* ── Ortak path stili ── */
+.preloader__path {
+  fill: transparent;
+  stroke: #000000;
+  stroke-width: 4;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+/* ── Çizim animasyonu (stroke) ── */
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── Dolgu animasyonu (fill) ── */
+@keyframes fill-black {
+  to {
+    fill: #000000;
+    stroke: transparent;
+  }
+}
+
+/* ── H ── */
+.preloader__path--1 {
+  animation:
+    draw      1.8s ease-in-out 0.0s forwards,
+    fill-black 1.2s ease-in-out 1.8s forwards;
+}
+
+/* ── A ── */
+.preloader__path--2 {
+  animation:
+    draw      1.8s ease-in-out 0.25s forwards,
+    fill-black 1.2s ease-in-out 2.05s forwards;
+}
+
+/* ── V ── */
+.preloader__path--3 {
+  animation:
+    draw      1.8s ease-in-out 0.5s forwards,
+    fill-black 1.2s ease-in-out 2.3s forwards;
+}
+
+/* ── E ── */
+.preloader__path--4 {
+  animation:
+    draw      1.8s ease-in-out 0.75s forwards,
+    fill-black 1.2s ease-in-out 2.55s forwards;
+}
+
+/* ── K ── */
+.preloader__path--5 {
+  animation:
+    draw      1.8s ease-in-out 1.0s forwards,
+    fill-black 1.2s ease-in-out 2.8s forwards;
+}

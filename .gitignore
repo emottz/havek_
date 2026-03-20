@@ -1,0 +1,40 @@
+node_modules/
+dist/
+.env
+.env.local
+items/
+tmp_catalog/
+.claude/
+.mcp.json
+
+# Text/data files
+*.txt
+*.xml
+
+# Image clutter (root level)
+*.PNG
+set01.png
+slide01.png
+slide02.png
+slide03.png
+"beyaz_logo_yazılı.png"
+
+# Docs
+*.pdf
+*.docx
+
+# Media
+*.mp4
+*.MP4
+*.MOV
+*.HEIC
+*.DNG
+*.bin
+*.emf
+
+# Scripts
+extract_products.js
+parse_paragraphs.js
+sync_products.js
+test_*.js
+nulgit

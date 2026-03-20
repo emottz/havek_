@@ -1,0 +1,368 @@
+/* ══ Havacılık Çözümleri Page ══ */
+
+/* ── Hero ── */
+.cozumler-hero {
+  background: linear-gradient(135deg, #1c2b3a 60%, #223348 100%);
+  padding: 110px 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cozumler-hero::after {
+  content: '';
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(46, 109, 164, 0.12);
+  pointer-events: none;
+}
+
+.cozumler-hero .container {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+.cozumler-hero__label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #2e6da4;
+  margin-bottom: 1rem;
+}
+
+.cozumler-hero__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.25rem;
+}
+
+.cozumler-hero__desc {
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.cozumler-hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-cta-primary {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  background: #2e6da4;
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-cta-primary:hover {
+  background: #1e5a8e;
+  transform: translateY(-1px);
+}
+
+.btn-cta-outline {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-cta-outline:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.6);
+}
+
+/* ── Section header ── */
+.cozumler-section-head {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.cozumler-section-head h2 {
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.cozumler-section-head p {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Solutions grid ── */
+.cozumler-solutions {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.cozumler-solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.cozumler-sol-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.cozumler-sol-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--color-border-strong);
+}
+
+.cozumler-sol-card__icon {
+  width: 52px;
+  height: 52px;
+  background: #eff6ff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2e6da4;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+
+.cozumler-sol-card__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.cozumler-sol-card__title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.cozumler-sol-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.cozumler-sol-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.cozumler-sol-card__features li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.cozumler-sol-card__features li svg {
+  color: #2e6da4;
+  flex-shrink: 0;
+}
+
+.cozumler-sol-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #2e6da4;
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.cozumler-sol-card__link:hover {
+  gap: 9px;
+}
+
+/* ── Stats ── */
+.cozumler-stats {
+  background: #1c2b3a;
+  padding: 4rem 0;
+}
+
+.cozumler-stats .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.cozumler-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+}
+
+.cozumler-stat__value {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.cozumler-stat__label {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Why HAVEK ── */
+.cozumler-why {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.cozumler-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.cozumler-why-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.cozumler-why-card__dot {
+  width: 8px;
+  height: 8px;
+  background: #2e6da4;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.cozumler-why-card h4 {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.cozumler-why-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Featured Products ── */
+.cozumler-featured {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.cozumler-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* ── CTA Banner ── */
+.cozumler-cta {
+  background: linear-gradient(135deg, #1c2b3a, #2e4a6a);
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.cozumler-cta h2 {
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin-bottom: 1rem;
+}
+
+.cozumler-cta p {
+  font-size: var(--text-base);
+  color: rgba(255,255,255,0.7);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .cozumler-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cozumler-featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .cozumler-solutions-grid {
+    grid-template-columns: 1fr;
+  }
+  .cozumler-stats .container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .cozumler-why-grid {
+    grid-template-columns: 1fr;
+  }
+  .cozumler-featured-grid {
+    grid-template-columns: 1fr;
+  }
+  .cozumler-hero {
+    padding: 100px 0 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cozumler-featured-grid {
+    grid-template-columns: 1fr;
+  }
+}

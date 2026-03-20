@@ -1,0 +1,118 @@
+.video-section-container {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding: 4rem 0;
+}
+
+.video-section-container.reverse {
+  flex-direction: row-reverse;
+}
+
+.video-content-text {
+  flex: 0 0 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.video-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+.title-underline.left {
+  margin: 0 0 1.5rem 0;
+  width: 70px;
+  height: 5px;
+  background-color: var(--color-secondary);
+  border-radius: 3px;
+}
+
+.video-description {
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+.video-player-wrapper {
+  flex: 1;
+  min-width: 480px;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  background-color: #000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+}
+
+.video-player-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.video-player-aspect {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  background-color: #000;
+}
+
+.video-iframe, .video-player-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 1200px) {
+  .video-section-container {
+    gap: 4rem;
+    padding: 3rem 0;
+  }
+  .video-title {
+    font-size: var(--text-3xl);
+  }
+  .video-player-wrapper {
+    min-width: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  .video-section-container,
+  .video-section-container.reverse {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 0;
+    gap: 3rem;
+  }
+
+  .video-content-text {
+    flex: 1;
+    align-items: center;
+    max-width: 100%;
+    min-width: unset;
+  }
+
+  .title-underline.left {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .video-player-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: unset;
+  }
+}
+

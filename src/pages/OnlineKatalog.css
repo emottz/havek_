@@ -1,0 +1,705 @@
+/* ══ Online Katalog ══ */
+
+.katalog-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: 68px;
+  overflow: hidden;
+  background: #dde2e8;
+}
+
+/* ── Araç çubuğu ── */
+.katalog-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  height: 50px;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(160, 174, 192, 0.25);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  flex-shrink: 0;
+  gap: 1rem;
+  z-index: 5;
+}
+
+.katalog-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.katalog-toolbar-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.katalog-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+/* Dil toggle */
+.katalog-lang-toggle {
+  display: flex;
+  border: 1.5px solid rgba(160, 174, 192, 0.4);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.katalog-lang-btn {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: background 0.15s, color 0.15s;
+}
+
+.katalog-lang-btn:first-child { border-right: 1.5px solid rgba(160,174,192,0.4); }
+.katalog-lang-btn:hover { background: rgba(46,109,164,0.07); color: #1c2b3a; }
+.katalog-lang-btn.active { background: #2e6da4; color: #fff; }
+
+/* İndir */
+.katalog-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #1c2b3a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.katalog-download-btn:hover:not(:disabled) { background: #2e6da4; transform: translateY(-1px); }
+.katalog-download-btn:disabled { opacity: 0.45; cursor: default; }
+
+@keyframes kspin { to { transform: rotate(360deg); } }
+
+/* PDF progress */
+.katalog-pdf-progress {
+  height: 2px;
+  background: rgba(46,109,164,0.12);
+  flex-shrink: 0;
+}
+.katalog-pdf-progress__fill {
+  height: 100%;
+  background: #2e6da4;
+  transition: width 0.3s ease;
+}
+
+/* ── Görüntüleyici ── */
+.katalog-viewer {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 0 0.5rem;
+  gap: 0.6rem;
+}
+
+/* Sayfa + oklar yan yana */
+.katalog-page-outer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  max-height: 100%;
+  min-height: 0;
+}
+
+/* Oklar */
+.katalog-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.9);
+  border: 1.5px solid rgba(160,174,192,0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  color: #475569;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.katalog-nav:hover:not(:disabled) {
+  color: #1c2b3a;
+  background: #ffffff;
+  border-color: #2e6da4;
+  transform: scale(1.05);
+}
+
+.katalog-nav:disabled { opacity: 0.2; cursor: default; }
+
+/* A4 sayfa wrap — 210:297 oranı */
+.katalog-page-wrap {
+  height: 100%;
+  aspect-ratio: 210 / 297;
+  max-width: calc(100vw - 160px);
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.16);
+}
+
+.katalog-page-content {
+  width: 100%;
+  height: 100%;
+  animation: kfade 0.18s ease;
+}
+
+@keyframes kfade {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Sayfa numarası */
+.katalog-page-num {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════
+   SAYFA BİLEŞENLERİ
+══════════════════════════════════ */
+
+/* ── Paylaşılan sayfa yapısı ── */
+
+/* ck-page: A4 frame'i tam doldur, footer altta sabit */
+.ck-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ck-header {
+  background: #1c2b3a;
+  padding: 11px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.ck-header__logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.ck-header__right {
+  font-size: 7.5px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.ck-header__doc-label {
+  font-size: 7.5px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.ck-accent-bar {
+  height: 3px;
+  background: #2e6da4;
+  flex-shrink: 0;
+}
+
+/* body: kalan alanı doldur, uzun içerikte scroll */
+.ck-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px 24px 12px;
+}
+
+/* footer: her zaman altta */
+.ck-footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 24px;
+  border-top: 1px solid #d1dbe6;
+}
+
+.ck-footer__logo {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.7;
+}
+
+.ck-footer__text {
+  font-size: 7.5px;
+  color: #94a3b8;
+}
+
+.ck-divider {
+  height: 1px;
+  background: #d1dbe6;
+  margin: 6px 0 8px;
+}
+
+/* ── Kapak ── */
+.ck-cover {
+  background: #1c2b3a;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ck-cover__main {
+  flex: 1;
+  min-height: 0;
+  padding: 36px 36px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ck-cover__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+
+.ck-cover__logo {
+  height: 62px;
+  width: auto;
+  object-fit: contain;
+}
+
+.ck-cover__year {
+  font-size: 11px;
+  font-weight: 700;
+  color: #2e6da4;
+  letter-spacing: 1px;
+}
+
+.ck-cover__tag {
+  font-size: 8px;
+  color: #2e6da4;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.ck-cover__title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.ck-cover__sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.42);
+  margin-bottom: 32px;
+}
+
+.ck-cover__imgs {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  max-height: 180px;
+}
+
+.ck-cover__img {
+  flex: 1;
+  width: 0;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #243447;
+}
+
+.ck-cover__bottom {
+  background: #131f2e;
+  padding: 12px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8px;
+  color: rgba(255,255,255,0.35);
+}
+
+.ck-cover__bottom-blue {
+  color: #2e6da4;
+  font-weight: 700;
+}
+
+/* ── İçindekiler ── */
+.ck-toc__title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1c2b3a;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+.ck-toc__section {
+  margin-bottom: 14px;
+}
+
+.ck-toc__section-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.ck-toc__bar {
+  display: block;
+  width: 3px;
+  height: 14px;
+  background: #2e6da4;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.ck-toc__cat-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1c2b3a;
+}
+
+.ck-toc__cat-count {
+  font-size: 8px;
+  color: #94a3b8;
+}
+
+.ck-toc__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 11px;
+  margin-bottom: 3px;
+}
+
+.ck-toc__dot {
+  display: block;
+  width: 3px;
+  height: 3px;
+  background: #cbd5e1;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ck-toc__item-name {
+  font-size: 8px;
+  color: #64748b;
+}
+
+/* ── Bölüm ayraç ── */
+.ck-section {
+  background: #f0f4f8;
+  height: 100%;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+
+.ck-section__num {
+  font-size: 80px;
+  font-weight: 800;
+  color: rgba(46,109,164,0.09);
+  line-height: 1;
+  margin-bottom: -4px;
+  letter-spacing: -2px;
+}
+
+.ck-section__accent {
+  width: 30px;
+  height: 3px;
+  background: #2e6da4;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.ck-section__tag {
+  font-size: 8px;
+  color: #2e6da4;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.ck-section__title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1c2b3a;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.ck-section__desc {
+  font-size: 10px;
+  color: #64748b;
+  line-height: 1.65;
+  max-width: 380px;
+}
+
+/* ── Ürün sayfası ── */
+.ck-chips {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.ck-chip {
+  background: #f0f4f8;
+  border-left: 2px solid #2e6da4;
+  border-radius: 2px;
+  padding: 2px 7px;
+  font-size: 7px;
+  font-weight: 700;
+  color: #2e6da4;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.ck-product__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1c2b3a;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.ck-product__intro {
+  font-size: 8.5px;
+  color: #1e293b;
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+.ck-product__imgs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ck-product__img {
+  flex: 1;
+  height: 90px;
+  object-fit: contain;
+  background: #f0f4f8;
+  border-radius: 3px;
+  padding: 6px;
+}
+
+.ck-two-col {
+  display: flex;
+  gap: 12px;
+}
+
+.ck-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.ck-section-block {
+  margin-bottom: 8px;
+}
+
+.ck-section-block__head {
+  background: #f0f4f8;
+  border-left: 2.5px solid #2e6da4;
+  padding: 3px 8px;
+  margin-bottom: 4px;
+  font-size: 7px;
+  font-weight: 700;
+  color: #1c2b3a;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.ck-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  margin-bottom: 2px;
+  padding-left: 2px;
+}
+
+.ck-bullet {
+  color: #2e6da4;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+
+.ck-item-text {
+  font-size: 8px;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+.ck-info-box {
+  display: flex;
+  justify-content: space-between;
+  background: #f0f4f8;
+  border: 1px solid #d1dbe6;
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+
+.ck-info-box > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ck-info-box__label {
+  font-size: 7px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ck-info-box__value {
+  font-size: 8px;
+  font-weight: 700;
+  color: #1c2b3a;
+}
+
+/* ── Arka kapak ── */
+.ck-back {
+  background: #1c2b3a;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  text-align: center;
+  box-sizing: border-box;
+  gap: 0;
+}
+
+.ck-back__logo {
+  height: 68px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  margin-bottom: 20px;
+}
+
+.ck-back__divider {
+  width: 28px;
+  height: 2px;
+  background: #2e6da4;
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+
+.ck-back__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.ck-back__cta {
+  font-size: 10px;
+  color: rgba(255,255,255,0.48);
+  line-height: 1.7;
+  max-width: 320px;
+  margin-bottom: 28px;
+}
+
+.ck-back__website {
+  font-size: 12px;
+  font-weight: 700;
+  color: #2e6da4;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.ck-back__email {
+  font-size: 9px;
+  color: rgba(255,255,255,0.5);
+  display: block;
+}
+
+/* ── Skeleton loading ── */
+.katalog-page-skeleton {
+  width: 100%;
+  max-width: 800px;
+  background: #ffffff;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+
+.katalog-skeleton-header {
+  height: 56px;
+  background: linear-gradient(90deg, #1c2b3a 0%, #2a3f52 100%);
+}
+
+.katalog-skeleton-body {
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.katalog-skeleton-line {
+  height: 10px;
+  background: linear-gradient(90deg, #f0f4f8 25%, #e2e8f0 50%, #f0f4f8 75%);
+  background-size: 200% 100%;
+  animation: kshimmer 1.4s ease infinite;
+  border-radius: 4px;
+}
+
+@keyframes kshimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .katalog-nav { width: 30px; height: 30px; }
+  .katalog-page-outer { gap: 0.4rem; }
+  .katalog-page-wrap { max-width: calc(100vw - 100px); }
+  .ck-cover__title { font-size: 26px; }
+  .ck-two-col { flex-direction: column; gap: 0; }
+  .katalog-toolbar-title { display: none; }
+  .katalog-viewer { padding: 0.75rem 0 0.4rem; }
+}
+
+@media (max-width: 480px) {
+  .katalog-nav { width: 26px; height: 26px; }
+  .katalog-page-wrap { max-width: calc(100vw - 76px); }
+}

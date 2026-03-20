@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Giriş Animasyonu</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Scroll bar çıkmasın diye overflow gizliyoruz */
+            overflow: hidden;
+        }
+
+        /* 1) ARKAPLANDAKİ ASIL SİTE İÇERİĞİ */
+        .main-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Temsili yüksek kaliteli bir ofis/masaüstü fotoğrafı */
+            background: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            background-size: cover;
+            
+            /* İçeriği ortalamak için flex kullanıyoruz */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            z-index: 1; /* En altta duracak katman */
+        }
+
+        .main-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .main-content p {
+            font-size: 1.2rem;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        /* 2) LOGO AÇILIŞ EKRANI (Splash Screen Katmanı) */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Giriş ekranı zeminini ferah ve opak beyaz yapıyoruz ki arkadaki resim başta gözükmesin */
+            background-color: #ffffff; 
+            z-index: 9999; /* En üstte duracak katman */
+            
+            /* Logo animasyonu 3.5 saniye sürüyor. 4. saniyede de kendi fade-out (karararak yok olma) animasyonuna başlayacak */
+            animation: fadeOutSplash 1.5s ease-in-out 4s forwards;
+            
+            /* Görünmez olduktan sonra fare tıklamalarını engellemesin diye pointer-events kapatıyoruz */
+            pointer-events: none;
+        }
+
+        /* Splash Screen Yok Olma Animasyonu */
+        @keyframes fadeOutSplash {
+            0% {
+                opacity: 1;
+                visibility: visible;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .logo-container {
+            width: 80%;
+            max-width: 500px; /* Logoyu ekranda çok devasa durmasın diye hafif küçültebiliriz */
+        }
+
+        .animated-logo {
+            width: 100%;
+            height: auto;
+        }
+
+        /* LOGO ÇİZİM ANİMASYONU KURALLARI */
+        .animated-logo path {
+            fill: transparent;
+            /* Çizgiler siyah */
+            stroke: #000000; 
+            stroke-width: 4;
+            
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            
+            /* Animasyon sırası: Önce çizim (2s), sonra içini boyama (1.5s) */
+            animation: 
+                draw 2s ease-in-out forwards,
+                fillColor 1.5s ease-in-out 2s forwards;
+        }
+
+        /* Her harfe küçük bir gecikme (<path> sırasına göre) */
+        .animated-logo path:nth-child(1) { animation-delay: 0.0s, 2s; }
+        .animated-logo path:nth-child(2) { animation-delay: 0.3s, 2.3s; }
+        .animated-logo path:nth-child(3) { animation-delay: 0.6s, 2.6s; }
+        .animated-logo path:nth-child(4) { animation-delay: 0.9s, 2.9s; }
+        .animated-logo path:nth-child(5) { animation-delay: 1.2s, 3.2s; }
+
+        @keyframes draw {
+            0% { stroke-dashoffset: 100; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes fillColor {
+            0% { fill: transparent; }
+            100% {
+                fill: #000000; 
+                stroke: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Arkaplandaki Sitenin Kendisi -->
+    <div class="main-content">
+        <h1>Hoş Geldiniz</h1>
+        <p>Giriş animasyonu tamamlandı ve site açıldı!</p>
+    </div>
+
+    <!-- Gelişmiş Açılış Ekranı ve Logo Animasyonu -->
+    <div class="splash-screen">
+        <div class="logo-container">
+            <svg class="animated-logo" id="katman_1" data-name="katman 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+              <path pathLength="100" d="M211.89,507.63h-78.46v72.06h-36.27v-169.72h36.27v61.39h78.46v-60.92h36.51v169.25h-36.51v-72.06Z"/>
+              <path pathLength="100" d="M443.26,565.37l-66.22-148.01c-1.7-3.78-5.45-6.2-9.59-6.2h-23.88c-4.12,0-7.85,2.4-9.57,6.16l-67.24,147.99c-3.15,6.95,1.93,14.85,9.57,14.85h2.63c23.9,0,46.77-9.73,63.33-26.96l3.75-3.9v-82.5l9.44-10.19,10.36,10.19v30.21l40.6,28.02v11.8l-19.15-1.88-20.68,1.52-.19,12.44,1.86,2.07c16.67,18.57,40.44,29.17,65.39,29.17h0c7.62,0,12.7-7.85,9.59-14.78ZM336.41,536.28l-15.11-1.88-17.74,1.88v-11.33l33.24-21.71-.39,33.04Z"/>
+              <path pathLength="100" d="M535.22,580.16h-41.96l-54.99-169.25h38.4l37.69,118.99h.47l38.16-118.99h38.4l-56.18,169.25Z"/>
+              <path pathLength="100" d="M637.62,512.6v36.03h95.53v31.29h-131.56v-169.72h123.5v31.29h-87.47v38.16h77.28v32.95h-77.28Z"/>
+              <path pathLength="100" d="M908.56,580.16h-51.2l-44.09-47.41-22.05,30.58v16.83h-37.93v-169.48h37.93v96l66.13-96h46.22l-63.76,96,68.74,73.48Z"/>
+            </svg>
+        </div>
+    </div>
+
+</body>
+</html>

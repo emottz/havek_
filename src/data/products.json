@@ -1,0 +1,366 @@
+[
+  {
+    "id": "haberlesmeegitimseti",
+    "title": "Haberleşme Eğitim Seti",
+    "description": "Haberleşme Atölye Eğitim Seti; VHF ve HF frekanslarında kule-uçak iletişiminin temellerini öğreten uygulamalı bir eğitim düzeneğidir. Antenler, alıcı-verici modüller ve kontrol paneli üzerinde söküm-takım ve fonksiyonel testler yapılabilmektedir. Sivil havacılıkta ATC haberleşme standartlarını kavramak için tasarlanmıştır.",
+    "images": [
+      "/items/Haberleşme eğitim seti/1.png"
+    ],
+    "folder": "Haberleşme eğitim seti",
+    "category": "atolye"
+  },
+  {
+    "id": "yakitsistemiegitimseti",
+    "title": "Yakıt Sistemi Eğitim Seti",
+    "description": "Eğitim seti şu temel donanımlar dan oluşmaktadır; uçuş kompartımanı yakıt sistemi paneli, refueling paneli, yakıt filtresi, x-feed valf, her bir depoya ait birer adet refueling pompası, alçak basınç yakıt filtresi, booster pompası, çek valf, boşaltım veya örnekleme valf i . Fonksiyonel testler yapılırken ECAM yak ıt sistemi göstergesinden pompa durumları, x-feed valf konumu, depolardaki yakıt miktar lar ı, sıcaklık bilgileri anlık takip edilebilir. Uyarı sistemi mevcuttur. Pompa, boru, filtreler ve yakıt tanklarında bakım onarım faaliyetleri yapılabilmektedir. Sıvı conta, sökülebilir boru ve bağlantılar yedekli verilmektedir. Borulama, contalama, yakıtörnekleme, yakıt filtresi söküm-takımı, pompa söküm-takımı, yakıt doldurma, yakıt boşaltma, flament /lamba değişimi, yakıt miktar algılayıcı aktivasyonu- deaktivasyonu gibi bir çok görevin yapılmasına olanak verir.",
+    "images": [
+      "/items/Uçak Yakıt Sistemi Eğitim Seti/3.png"
+    ],
+    "folder": "Uçak Yakıt Sistemi Eğitim Seti"
+  },
+  {
+    "id": "buzveyagmurkorumasistemiegitimseti",
+    "title": "Buz ve Yağmur Koruma Sistemi Eğitim Seti",
+    "description": "Buz ve yağmur koruma sistemi eğitim setinde uçaklardaki buzlanmaya karşı kullanılan temel ısıtma sistemlerine ve yağmurdan korunma sistemlerine yer verilmektedir. Bu kapsamda eğitim seti şu temel donanımlardan ol uşmaktadır: Pitot Tüp Elektriki Isıtıcılı Boşaltım Hattı Isıtıcı Bantlı Kanat Kesiti Termal Isıtıcılı Kokpit Ön Camı Elektriki Isıtıcılı Cam Sileceği ve Mekanizması Cam Silecek Suyu, Püskürtme Kafası ve Deposu Yukarıda bahsi geçen donanımlar a ek ihtiyaca bağlı olarak elektrikli ısıtıcılı pervane veya pal, anten, hücum açısı algılayıcı, de- ice boot donanımına sahip kanat kesiti gibi komponentler sisteme eklenebilmektedir.",
+    "images": [
+      "/items/Uçak Buz ve Yağmurdan Koruma Egitim Seti/1.png",
+      "/items/Uçak Buz ve Yağmurdan Koruma Egitim Seti/2.png",
+      "/items/Uçak Buz ve Yağmurdan Koruma Egitim Seti/3.png"
+    ],
+    "folder": "Uçak Buz ve Yağmurdan Koruma Egitim Seti"
+  },
+  {
+    "id": "antiskidautobrakesistemifonksiyoneltestleriegitims",
+    "title": "Antiskid / Autobrake Sistemi Fonksiyonel Testleri Eğitim Seti",
+    "description": "Bu eğitim seti ile sistem testleri, LRU testleri, söküm takım, fonksiyonel testler gibi bakım onarım faaliyetleri yapılabilmektedir. Bütün sistemlerin sinoptik diyagramları sanal verilerle işlevsel olarak izlenebilmektedir . MAT modülü ile tüm sistemler e ulaşım sağlanabilmektedir. İ htiyaca göre teker, motor, fren ve sürücü modülleri eklenmektedir. Hazırlanan bakım dokümanına göre şu tasklar yapılabilmektedir : Main Hydraulic System Power Removal , TASK , Main Hydraulic System Pressurization , TASK , AirData Inertial Reference Unit-Alignment,TASK, Autobrake Indication Test, SUBTASK , Antiskid Brake Release , SUBTASK, Autobrake Application, SUBTASK , Showing a Maintenance Page , TASK , Wheel speed Transducer pin , SUBTASK, Antiskid Transducer Drive Removal , TASK , Antiskid Transducer Drive Installation, TASK , How to Use the Central Maintenance Computing System , , Operational Test of the Hydraulic Systems A and B, TASK , System Test of the Hydraulic Systems A and B, TASK , Spoiler Operational Test, TASK , Spoilers System Test, TASK , Spoiler Deactivation , TASK , Spoiler Deactivation ( With the Spoilers Up ), TASK , Spoiler Deactivation ( With the Spoilers Down ), TASK , Spoiler Activation , TASK , Spoiler Control Mechanism for the Mechanical Spoilers Removal , TASK , Spoiler Control Mechanism for the Mechanical Spoilers Installation, TASK , Throttle Switch Test, Stall Warning Horn Test Bu eğitim seti merkezi bakım sistemi testlerinin yapılabilmesi için gerekli donanımlara da sahiptir. İhtiyaca göre istenen sistemlerin testleri merkezi bakım sistemi testleri arasına eklenir.",
+    "images": [
+      "/items/Uçak AntiskidAutobrake Sistemi Fonksiyonel Testleri Eğitim Seti/1.png"
+    ],
+    "folder": "Uçak AntiskidAutobrake Sistemi Fonksiyonel Testleri Eğitim Seti"
+  },
+  {
+    "id": "emniyetlemeaygitlarivetorklamaistasyonu",
+    "title": "Emniyetleme Aygıtları ve Torklama İstasyonu",
+    "description": "Emniyet teli ve ko pilya kullanımı ( locking devices ) eğitim seti; örnek uygulamalar, kullanıcı uygulamaları ve torklama istasyonu olmak üzere üç bölümden oluşur. Örnek uygulamalar kısmında konnektör, kelebek somun, değişik ebatlarda vida, gövde-vida bağlantısı, kale somun, rod emniyet teli ve ko pilya uygulamaları bulunmaktadır. Kullanıcı uygulamalarıkısmında emniyet teli ve ko pilya uygulamalarının yapılabilmesi için bağlantı elemanları bulunur. Vidalar arası mesafe ler deki farklılıklar doğru burgu sayısı alıştırmalarının yapılmasına olanak verir. Torklama istasyonunda kullanıcı vidayı uygun değerde torkladıktan sonra emniyet teli uygul a ması yapabilmektedir.",
+    "images": [
+      "/items/Emniyetleme Aygıtları ve Torklama Standı/1.png",
+      "/items/Emniyetleme Aygıtları ve Torklama Standı/2.png"
+    ],
+    "folder": "Emniyetleme Aygıtları ve Torklama Standı"
+  },
+  {
+    "id": "kabinbasinclandirmakontrolsistemiegitimseti",
+    "title": "Kabin Basınçlandırma Kontrol Sistemi Eğitim Seti",
+    "description": "Kabin basınçlandırma kontrol sistemi fonksiyonel testlerinin yapılabildiği bu eğitim seti şu temel donanımlardan oluşmaktadır: Basınçlandırma kontrol paneli 2 adet basınçlandırma kontrol ünitesi Temsili harici besleme Outflow valf Yukarıdaki donanımlar ile temel model olarak alınan Boeing 737 uçaklarının kabin basınçlandırma kontrol sistemi fonksiyonel test leri işlem basamakları birebir uygulanabilirken kullanıcılar onaylı bakım dokümanı kullanımını da deneyimleyebilmektedirler. Temel olarak şu testler yapılabilmektedir: Basınçlandırma sistemi manuel mod testi (TASK ) Master caution test (TASK ) Basınçlandırma sistemi yer testi (TASK ) Kargo yangını modunda dakikada 750 feet alçalma (TASK )",
+    "images": [
+      "/items/Uçak Kabin Basınçlandırma Kontrol Sistemi Eğitim Seti/1.png"
+    ],
+    "folder": "Uçak Kabin Basınçlandırma Kontrol Sistemi Eğitim Seti"
+  },
+  {
+    "id": "ucaktemelelektrikdevreleriegitimseti",
+    "title": "Uçak Temel Elektrik Devreleri Eğitim Seti",
+    "description": "“ Uçak Temel Elektrik Devreleri Eğitim Seti” uçak temel kablo bağlantı sistemlerinin, EWIS ( Electrical Wiring Interconnection System ) eğitimlerine uygun olarak yapılmasına olanak veren bir eğitim setidir. Uçak bakımeğitimlerinde tipik zil-anahtar tesisatları yerine havacılık mantığına daha uygun iki konumlu anahtar (toggle switch), yaylı anahtar (push buton), buzzer, sinyal lambası, potansiyometre, konnektör, voltmetre donanımlarıyla oluşturulan tesisatlar kurulabilir. Stant ve masa tipi modellerimiz mevcuttur. Fiziki alan yetersizliği olan okullarda masa tipi modellerimiz daha uygundur.",
+    "images": [
+      "/items/Temel Elektrik Devreleri Eğitim Seti/1.png",
+      "/items/Temel Elektrik Devreleri Eğitim Seti/2.png",
+      "/items/Temel Elektrik Devreleri Eğitim Seti/3.png",
+      "/items/Temel Elektrik Devreleri Eğitim Seti/4.png",
+      "/items/Temel Elektrik Devreleri Eğitim Seti/5.png"
+    ],
+    "folder": "Temel Elektrik Devreleri Eğitim Seti"
+  },
+  {
+    "id": "oksijensistemiegitimseti",
+    "title": "Oksijen Sistemi Eğitim Seti",
+    "description": "Oksijen Sistemi Eğitim Seti; mürettebat, yolcu ve taşınabilir oksijen sistemi ekipmanlarınıiçermektedir. Yolcu servis ünitesi (4 maskeli), enerji ve maske kontrol paneli, taşınabilir solunum ekipmanı (PBE), oksijen jeneratörü, taşınabilir oksijen tüpü maskesi, taşınabilir oksijen tüpü, ekip-yolcu oksijen tüpü, taşınabilir oksijen tüpü kabini, oksijen tüpü montaj ekipmanları, regülatör, oksijen manifoldu ekipmanları ve dikey montaj paneli temel bileşenlerinden oluşmaktadır. Bunlarındışında ekip oksijen maskesi gibi ekipmanlar isteğe bağlı eklenebilmektedir. Tüm donanımlar, gerçek yolcu uçaklarında ömrünü tamamlayıp revize edilerek kullanıma sunulmuştur. Eğitim Setinde şu pratik eğitimler yapılabilmektedir:  Güvenlik Önlemleri  Bakım Pratikleri  Leak Detection (Sızdırmazlık Testi)  Taşınabilir Oksijen Tüpü Değiştirme  Oksijen Sistemi Komponentlerinin Temizlenmesi  PSU Oksijen Maskelerinin Toplanması  Oksijen TüpüSöküm – Takım",
+    "images": [
+      "/items/Uçak Oksijen Sistemi Eğitim Seti/8.png",
+      "/items/Uçak Oksijen Sistemi Eğitim Seti/Adsız.png",
+      "/items/Uçak Oksijen Sistemi Eğitim Seti/Oksijen Sistemi-1.png"
+    ],
+    "folder": "Uçak Oksijen Sistemi Eğitim Seti"
+  },
+  {
+    "id": "ewistakimcantasi",
+    "title": "EWIS Takım Çantası",
+    "description": "“EWIS Eğitim Çantası” içerisinde B1.1 ve B2 kalifiye eleman kontrol listesindeki tasklar için alet gereksinimleri sağlanmaktadır. Resimle rde görülen aletler dışında bir çok sarf malzeme, ölçü aletleri, pin söküm-takım aletleri, ısı tabancası bulunmaktadır. Aşağıda verilen temel model içerikleri kullanıcı isteğine göre çoğaltılabilmektedir. Temel Çanta İçerikleri: 1 adet dmc tool 5 adet dmc tool die 1 adet megger 1 adet miliohmmetre 5 adet awg tool 2 adet avometre 2 adet strap tabanca 1 adet ısı tabancası 4 adet yan keski 4 adet pense 5 adet sıkma aleti ( dmc muadili) 5 adet wire strıpper 300 adet pin 20 adet konnektör 10 adet remove tool 100 adet d- sub konnektör (erkek ve dişi) 2 adet terminal sıkma pensesi",
+    "images": []
+  },
+  {
+    "id": "merkezibakimsistemiegitimsetipercinlemestandiveset",
+    "title": "Merkezi Bakım Sistemi Eğitim Seti Perçinleme Standı ve Seti",
+    "description": "Saç metal işlemleri için gerekli gövde yapısı, levhalar, el aletleri ve sarf malzemeleri içerir. Resimlerde 4 grupluk set içeriği verilmiştir. Set içerisine kompresör, hava tesisatı, şartlandırıcı gibi ek tertibatlar eklenebilmektedir. İhtiyaca göre set içeriğidüzenlenmektedir.",
+    "images": [
+      "/items/Merkezi Bakım Sistemi Eğitim Seti/1.png",
+      "/items/Merkezi Bakım Sistemi Eğitim Seti/2.png",
+      "/items/Merkezi Bakım Sistemi Eğitim Seti/3.png"
+    ],
+    "folder": "Merkezi Bakım Sistemi Eğitim Seti"
+  },
+  {
+    "id": "paftakilavuzvehelicoilegitimsetitupdepolamakafesi",
+    "title": "Pafta, Kılavuz ve Helicoil Eğitim Seti Tüp Depolama Kafesi",
+    "description": "İhtiyaca göre metal dolap, kafes ve takım arabası gibi ürünler imal edilmektedir.",
+    "images": [
+      "/items/Pafta-Kılavuz  ve Helicoil Kullanımı Eğitim Seti/1.png",
+      "/items/Pafta-Kılavuz  ve Helicoil Kullanımı Eğitim Seti/2.png",
+      "/items/Pafta-Kılavuz  ve Helicoil Kullanımı Eğitim Seti/3.png",
+      "/items/Pafta-Kılavuz  ve Helicoil Kullanımı Eğitim Seti/4.png",
+      "/items/Pafta-Kılavuz  ve Helicoil Kullanımı Eğitim Seti/5.png"
+    ],
+    "folder": "Pafta-Kılavuz  ve Helicoil Kullanımı Eğitim Seti"
+  },
+  {
+    "id": "pervanestokajkazani",
+    "title": "Pervane Stokaj Kazanı",
+    "description": "İhtiyaca göre metal dolap, kafes ve takım arabası gibi ürünler imal edilmektedir.",
+    "images": [
+      "/items/Pervane Stokaj Kazanı/1.png"
+    ],
+    "folder": "Pervane Stokaj Kazanı"
+  },
+  {
+    "id": "hidrolikegitimseti",
+    "title": "Hidrolik Eğitim Seti",
+    "description": "Uçak Hidrolik Sistemi Eğitim Seti; el pompası ve elektrik motoru sürücülü pompa yardımıyla basınçlandırılabilir. Hatta basınç varken kontrol panelinden yapılan flap konumu seçimine göre selektör valf konumu ayarlanır ve flap hareketi sağlanır. Sistemde basınç kaynakları kullanılmıyorken akümülatör kesme valfi açıksa sistem basıncı, akümülatör basıncında kalmaktadır. Rezervuar üzerine doldurma portu eklenmiştir. Bu porttan malabar ile hidrolik basılabilmektedir. Malabar bağlantıları sete da hildir . İstendiği taktirde set içeriğine malabar da eklenebilmektedir. Ayrıca rezervuar üzerinde dolum penceresi, havalandırma hattı, düşük seviye anahtarı ve seviye algılayıcı bulunmaktadır. El pompası ve drain valfi kullanılarak sistemdeki hidrolik boşaltılabilmektedir. El pompası basınç ayar vanası emniyet teli ile sabitlenmiş olup sisteme kontrolsüz basınç verilmesini önlemektedir. Bu eğitim setinde yapılabilen temel tasklar şunlardır:  Hydraulic Reservoir Servicing  Clean the External Surfaces of the Airplane  Hydraulic System A or B Pressurization  Hydraulic System A or B Pressurization with a Portable Hydraulic Cart  Hydraulic System Pressurization with an Electric Motor- Driven Pump  Hydraulic System A or B Power Removal  Return Filter Element Removal  Return Filter Element Installation  Hydraulic Fluid Quantity Transmitter / Indicator Removal  Hydraulic Fluid Quantity Transmitter / Indicator Installation Eğitim seti komponentleri söküm-takımiçin uygundur. Boru ve bağlantılar yedekli verilmektedir . Kullanıcılar için çalışan bir sistemde uygulama yapabilme imkânı sağlanmaktadır. Harici Elektrik Kaynağı 30, 40 ve 50 A seçenekleri mevcuttur. Talep doğrultusunda farklı akım değ erlerinde de imal edilmektedir.",
+    "images": [
+      "/items/Uçak Hidrolik Eğitim Seti/1.png",
+      "/items/Uçak Hidrolik Eğitim Seti/2.png",
+      "/items/Uçak Hidrolik Eğitim Seti/3.png"
+    ],
+    "folder": "Uçak Hidrolik Eğitim Seti"
+  },
+  {
+    "id": "suveatiksistemituvaletkabinliegitimseti",
+    "title": "Su ve Atık Sistemi (Tuvalet Kabinli) Eğitim Seti",
+    "description": "Su ve atık sistemi tuvalet kabini ekipmanlarınıiçerir. Kabinin tüm ekipmanlarıçalışır duruma getirilerek kontrol paneli üzerinden kontrolleri yapılmaktadır. Resimdeki kabin temsilidir. İletişime geçerek kabin hakkında detaylı bilgi alabilirsiniz.",
+    "images": [
+      "/items/Su ve Atık Sistemi (Tuvalet Kabinli)/1.png",
+      "/items/Su ve Atık Sistemi (Tuvalet Kabinli)/2.png"
+    ],
+    "folder": "Su ve Atık Sistemi (Tuvalet Kabinli)"
+  },
+  {
+    "id": "ucakyanginsistemiegitimseti",
+    "title": "Uçak Yangın Sistemi Eğitim Seti",
+    "description": "Uçak yangın sistemi eğitim seti; yangın algıla ma ve yangınsöndürme sistemlerini içermektedir. Yangınsöndürme sisteminde tuvalet çöp kutusu monte yangınsöndürücü, portatif yangınsöndürücü, kargo monte yangınsöndürücüleri bulunmaktadır. Yangın algılama sisteminde continuous loop, fenwal motor yangın algılayıcı, duman algılayıcı ve test ekipmanları bulunmaktadır. Kargo yangınsöndürücü konnektörlerinde aktif ölçüm yapılabilir.",
+    "images": [
+      "/items/Uçak Yangın Koruma Eğitim Seti/gb.png",
+      "/items/Uçak Yangın Koruma Eğitim Seti/hk.png"
+    ],
+    "folder": "Uçak Yangın Koruma Eğitim Seti"
+  },
+  {
+    "id": "pervanesistemleriegitimsetisabitvedegiskenhatvelis",
+    "title": "Pervane Sistemleri Eğitim Seti",
+    "description": "Sabit ve değişken hatveli seçenekleri mevcuttur. Koruma kafesi kolay sökülüp takılabilir, böylece bakım onarım faaliyetleri gerçekleştirilebilmektedir. Yataklar ulaşılabilir şekilde koruma kutusu içine yerleştirilmiştir. Böylece yatakların yağlanması, yağ-gres kaçak kontrolü, temizlik kontrolleri yapılabilmektedir. Titreşim ve devir bilgisi göstergeler üzerinden takip edilebilir. Pervane iz kontrolü, statik balans, dinamik balans ve söküm-takım gibi görevlerin yapılabilmesine olanak verir.",
+    "images": [
+      "/items/Dinamik Balans Cihazlı Pervane Eğitim Seti/1.png",
+      "/items/Dinamik Balans Cihazlı Pervane Eğitim Seti/2.png",
+      "/items/Dinamik Balans Cihazlı Pervane Eğitim Seti/3.png",
+      "/items/Dinamik Balans Cihazlı Pervane Eğitim Seti/4.png"
+    ],
+    "folder": "Dinamik Balans Cihazlı Pervane Eğitim Seti"
+  },
+  {
+    "id": "ucakpnomatiksistemiegitimseti",
+    "title": "Uçak Pnömatik Sistemi Eğitim Seti",
+    "description": "Uçak Pnömatik Sistemi Eğitim Seti’nde bleed havasınınşartlandırılma süreci; ECAM bleed sistem sayfasının yanısıra donanımsal olarak da izlenebilmektedir.  uçaklarının bleed kontrol paneli, gösterge ve uyarı sistemleri, A320 bleed sistem ECAM sayfası, precooler , PRV ( pressure regulating valve ) ana donanımlarından ol uşmaktadır. Bunların yanısıra A300 pnömatik boru ve bağlantıları ile pnömatik hatlarda söküm- takım, kontrol işlemlerinin yapılmasına olanak verir. PRV üzerindeki pozisyon kontrol göstergesinden valf kapakçığının konumu anlıkgözlemlenebilmektedir. Sıcaklık ve basınç anlık olarak ölçülmekte olup tüm uyarı ve ikazlarıngözlemlenebilmesi için ölçeklendirilmiştir.",
+    "images": [
+      "/items/Uçak Pnömatik Sistemi Eğitim Seti/12343.png"
+    ],
+    "folder": "Uçak Pnömatik Sistemi Eğitim Seti"
+  },
+  {
+    "id": "harnessuygulamalariegitimstandi",
+    "title": "Harness Uygulamaları Eğitim Standı",
+    "description": "Harness (kablolama) uygulamalarıiçin 4 kişilik eğitim standıdır. Basit, orta ve ileri seviye modelleri yapılabilmektedir.",
+    "images": [
+      "/items/Harness ve Kablolama Eğitim Standı/1.png"
+    ],
+    "folder": "Harness ve Kablolama Eğitim Standı"
+  },
+  {
+    "id": "contalamaveyaglamaegitimstandi",
+    "title": "Contalama ve Yağlama Eğitim Standı",
+    "description": "Yağlama ve contalama işlemleri için uygun oring çalışma parçaları, yakıt tankı contalama alanı, gresörlüklü yataklar, gres pompası, parça temizleme kimyasalları ve oring takımı gibi ekipmanlarıiçerir.",
+    "images": [
+      "/items/Contalama ve Yağlama Eğitim Standı/2.png",
+      "/items/Contalama ve Yağlama Eğitim Standı/1.png"
+    ],
+    "folder": "Contalama ve Yağlama Eğitim Standı"
+  },
+  {
+    "id": "ucuskumandayuzeyleriegitimseti",
+    "title": "Uçuş Kumanda Yüzeyleri Eğitim Seti",
+    "description": "Farklıuçuş kumanda yüzeyi kontrol sistemlerini içerir. Mekanik ve elektrik motorlu kumanda sistemlerinin ayar ve testleri yapılabilmektedir. Model uçak ve ECAM Flight Controls Sistem Sayfası’nda verilen kumanda komutlarıyla kontrol yüzeylerindeki değişimler gözlemlenebilmektedir.",
+    "images": [
+      "/items/Uçuş Kumanda Yüzeyleri Eğitim Seti/1.png",
+      "/items/Uçuş Kumanda Yüzeyleri Eğitim Seti/2.png"
+    ],
+    "folder": "Uçuş Kumanda Yüzeyleri Eğitim Seti"
+  },
+  {
+    "id": "borulamaegitimseti",
+    "title": "Borulama Eğitim Seti",
+    "description": "Boru ve hortum hazırlama, havşalama , boru kesme, boru bükme, çapak alma, sızdırmazlık testi gibi uygulamaların yapılmasıiçin gerekli ekipman ve çalışma alanınıiçerir. İnç veya metrik takımlar, sarf malzemeler de sağlanmaktadır. Masa çalışma alanı 45*90 cm olup isteğegöre yeniden boyutlandırılabilir. Masa, takım ve sarf malzemeler isteğegöre eklenebilmektedir.",
+    "images": [
+      "/items/Borulama Aletleri Eğitim Seti/1.png"
+    ],
+    "folder": "Borulama Aletleri Eğitim Seti"
+  },
+  {
+    "id": "3dcizimveimalatprojelerimiz",
+    "title": "3D Çizim ve İmalat Projelerimiz",
+    "description": "Lazer kesim ve 3 boyutlu yazıcı makinelerimizle istediğiniz parçalarınçizimlerini yapıp imal edebiliyoruz. Resimlerde örnekler mevcuttur.",
+    "images": []
+  },
+  {
+    "id": "3dprinter60603030",
+    "title": "3D Printer 60*60 – 30*30",
+    "description": "Endüstriyel uygulamalar için 60*60*60 ’ lık ve a matör uygulamalar için 30*30*30’ luk iki farklı tip 3d yazıcı uygulamamız bulunmaktadır.",
+    "images": []
+  },
+  {
+    "id": "bilgisayarlirobotikkodlamaseti",
+    "title": "Bilgisayarlı Robotik Kodlama Seti",
+    "description": "Temel , orta ve ileri seviye olmak üzere 3 farklı seviyedeki kodlama setimizde Raspery ve/veya arduino seçenekleri bulunmaktadır. Bilgisayar ve laboratuvar ortamına ihtiyaç duymadan kodlama eğitiminin verilmesine olanak sağlar.",
+    "images": []
+  },
+  {
+    "id": "acinduksiyonmotorluelektrikliaraclaregitimseti",
+    "title": "Ac İndüksiyon Motorlu Elektrikli Araçlar Eğitim Seti",
+    "description": "",
+    "images": []
+  },
+  {
+    "id": "esdmasasiveekipmanlariegitimseti",
+    "title": "ESD Masası ve Ekipmanları Eğitim Seti",
+    "description": "Ürün teknik detayları kataloğumuzda yer almaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.",
+    "images": [
+      "/items/ESD Masası ve Ekipmanları Eğitim Seti/1.png"
+    ],
+    "folder": "ESD Masası ve Ekipmanları Eğitim Seti"
+  },
+  {
+    "id": "glasskokpitegitimsetiv2ucakaletleri",
+    "title": "Glass Kokpit Eğitim Seti (V2-Uçak Aletleri)",
+    "description": "Glass Kokpit Eğitim Seti’nde kokpit göstergeleri, ECAM ve Kaptan EFIS kontrol panelleri, pitotstatik sistem aletleri, 3 eksende hareket eden jiroskop sistemli uçak maketi, pitot statik sistem testi hava kaynağı, hata paneli gibi temel donanımlar bulunmaktadır. Hava kaynağı ile pitot tüp ve statik port testleri yapılırken PFD üzerinde airspeed (hava hızı) ve altitude (irtifa) değişimleri gözlemlenebilmektedir. Sıcaklık sensörü ile ekrandaki sıcaklık parametrelerinin değişimleri gözlemlenebilir. Uçak maketi içerisinde bulunan jiroskop, uçağın 3 eksendeki hareketlerini saptayarak ekranda gözükmesine olanak verir. Hata panelinde 15 farklı hata anahtarı bulunmaktadır. Bu hatalar ile kullanıcının hata saptama ve sistem takibi gibi kabiliyetlerinin gelişimi sağlanır. Eğitim setinde kullanılan tüm komponentlerde söküm-takım-test gibi bakım faaliyetleri yapılabilir. Tüm kontroller ve hata paneli işlevseldir. Hata panelinden girilen hata, kontrol paneli üzerinden yapılan değişimlerle giderilebilmektedir. Örneğin DMC failure verildiğinde ilgili ekranlarda oluşacak DMC arızası bu ekran grubuna ait DMC değiştirildiğinde düzelmektedir.",
+    "images": [
+      "/items/Glass Kokpit Eğitim Seti (V2-Uçak Aletleri)/1.png",
+      "/items/Glass Kokpit Eğitim Seti (V2-Uçak Aletleri)/2.png"
+    ],
+    "folder": "Glass Kokpit Eğitim Seti (V2-Uçak Aletleri)"
+  },
+  {
+    "id": "otopilotveucuskumandalariegitimseti",
+    "title": "Otopilot ve Uçuş Kumandaları Eğitim Seti",
+    "description": "Ürün teknik detayları kataloğumuzda yer almaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.",
+    "images": [
+      "/items/Otopilot ve Uçuş Kumandaları Eğitim Seti/1.png"
+    ],
+    "folder": "Otopilot ve Uçuş Kumandaları Eğitim Seti"
+  },
+  {
+    "id": "pitotstatiksistemtestcihazi",
+    "title": "Pitot Statik Sistem Test Cihazı",
+    "description": "Ürün teknik detayları kataloğumuzda yer almaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.",
+    "images": [
+      "/items/Pitot Statik Sistem Test Cihazı/1.png",
+      "/items/Pitot Statik Sistem Test Cihazı/2.png",
+      "/items/Pitot Statik Sistem Test Cihazı/3.png"
+    ],
+    "folder": "Pitot Statik Sistem Test Cihazı"
+  },
+  {
+    "id": "resimlikokpitstandi",
+    "title": "Resimli Kokpit Standı",
+    "description": "Tekerlekli ve destekli kokpit standıdır. İstenilen uçak tipi için hazırlanabilmektedir. Destek tahtaları kokpitle birebir ölçülerdedir.",
+    "images": [
+      "/items/Resimli Kokpit Standı/1.png",
+      "/items/Resimli Kokpit Standı/2.png"
+    ],
+    "folder": "Resimli Kokpit Standı"
+  },
+  {
+    "id": "ucakelektriksistemiveisiklariegitimseti",
+    "title": "Uçak Elektrik Sistemi ve Işıkları Eğitim Seti",
+    "description": "Eğitim seti, uçak elektrik ve ışıklar kontrol paneli, ECAM /EICAS elektrik sistem sayfası, 2 adet TRU, 5 adet kontaktör, röle takımı, 2 adet batarya, harici besleme kaynağı ve bağlantıları, uçak ışık grupları, deşarj püskülü, 6 adet BUS barası temel donanımlarınıiçerir. Eğitim setinin tüm bileşenleri aktif durumda olup üzerinde fonksiyonel testler, söküm-takım, kontrol gibi bakım faaliyetlerinin yapılmasına olanak sağlar. Genel olarak takip eden bakımgörevleri bu eğitim setinde yapılabilmektedir: Tipik elektrik diyagramlarının ve sistem şemalarının yorumlanması, Bakım el kitabı kullanarak bir sistemdeki kablolarınsüreklilik kontrolünün yapılması, Test aletlerini kullanarak basit arıza tespit tekniklerinin uygulamasının yapılması, Farklıölçü aletleri ile gerilim, akım ve direnç değerlerinin ölçülmesi, Elektrik sisteminde devamlılık ve izolasyon testlerinin yapılması, Elektrik dağıtım kontaktör/röle/RCCB vb. söküm-takım bakım faaliyetlerinin gerçekleştirilmesi, Batarya söküm-takımı ve servisi, Lamba ve flament değişimi, Harici elektrik kaynakları, bağlanması ve kullanılması.",
+    "images": [
+      "/items/Uçak Elektrik Sistemi ve Işıkları Eğitim Seti/1.png",
+      "/items/Uçak Elektrik Sistemi ve Işıkları Eğitim Seti/2.png"
+    ],
+    "folder": "Uçak Elektrik Sistemi ve Işıkları Eğitim Seti"
+  },
+  {
+    "id": "ucakhaberlesmesistemleriegitimseti",
+    "title": "Uçak Haberleşme Sistemleri Eğitim Seti",
+    "description": "Haberleşme Eğitim Seti ; VHF ve HF frekanslarında haberleşmeyi sağlar . Y er istasyonu çanta olarak tasarlanmış olup setten fiziksel olarak ayrılabilmektedir. Haberleşme ; yer istasyon modülü , eğitim seti ve yasal olarak izne tabi olmayan frekans aralıklarında haberleşme yapan cihazlar arasında yapılabilmektedir (seçili frekanslar izin gerektirmeyen frekans aralığına göre düzenlenmektedir) . Bu sebeple set kullanımıiçin herhangi bir ek izne ihtiyaç duyulmamaktadır. Söküm takım gibi bakım faaliyetlerinin yapılabilmesine olanak verir.",
+    "images": [
+      "/items/Uçak Haberleşme Sistemleri Eğitim Seti/1.png",
+      "/items/Uçak Haberleşme Sistemleri Eğitim Seti/2.png"
+    ],
+    "folder": "Uçak Haberleşme Sistemleri Eğitim Seti"
+  },
+  {
+    "id": "28vharicielektrikkaynagi",
+    "title": "28 V Harici Elektrik Kaynağı",
+    "description": "Ürün teknik detayları kataloğumuzda yer almaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.",
+    "images": [
+      "/items/konu dışı/28 V Harici Elektrik Kaynağı/1.png"
+    ],
+    "folder": "konu dışı/28 V Harici Elektrik Kaynağı"
+  },
+  {
+    "id": "panostandi",
+    "title": "Pano Standı",
+    "description": "Ürün teknik detayları kataloğumuzda yer almaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.",
+    "images": [
+      "/items/konu dışı/Pano Standı/1.png"
+    ],
+    "folder": "konu dışı/Pano Standı"
+  },
+  {
+    "id": "percinlemestandivesarfmalzemeleri",
+    "title": "Perçinleme Standı ve Sarf Malzemeleri",
+    "description": "Ürün teknik detayları kataloğumuzda yer almaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.",
+    "images": [
+      "/items/konu dışı/Perçinleme Standı ve Sarf Malzemeleri/1.png",
+      "/items/konu dışı/Perçinleme Standı ve Sarf Malzemeleri/2.png",
+      "/items/konu dışı/Perçinleme Standı ve Sarf Malzemeleri/3.png",
+      "/items/konu dışı/Perçinleme Standı ve Sarf Malzemeleri/4.png",
+      "/items/konu dışı/Perçinleme Standı ve Sarf Malzemeleri/5.png"
+    ],
+    "folder": "konu dışı/Perçinleme Standı ve Sarf Malzemeleri"
+  },
+  {
+    "id": "ruzgartuneli",
+    "title": "Rüzgar Tüneli",
+    "description": "Ürün teknik detayları kataloğumuzda yer almaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.",
+    "images": [
+      "/items/konu dışı/Rüzgar Tüneli/1.png",
+      "/items/konu dışı/Rüzgar Tüneli/2.png"
+    ],
+    "folder": "konu dışı/Rüzgar Tüneli"
+  },
+  {
+    "id": "simulatorkabini2kisilikcessnakapalikabin",
+    "title": "Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)",
+    "description": "Ürün teknik detayları kataloğumuzda yer almaktadır. Detaylı bilgi için bizimle iletişime geçebilirsiniz.",
+    "images": [
+      "/items/konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)/IMG_1995.png",
+      "/items/konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)/IMG_1998.png",
+      "/items/konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)/IMG_2001.png",
+      "/items/konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)/IMG_2002.png",
+      "/items/konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)/IMG_2006.png",
+      "/items/konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)/IMG_2009.png",
+      "/items/konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)/IMG_2011.png",
+      "/items/konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)/IMG_2014.png",
+      "/items/konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)/IMG_2015.png",
+      "/items/konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)/IMG_2016.png",
+      "/items/konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)/IMG_2028.png"
+    ],
+    "folder": "konu dışı/Simülatör Kabini (2 Kişilik Cessna Kapalı Kabin)"
+  }
+]
