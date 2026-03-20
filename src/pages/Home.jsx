@@ -70,9 +70,9 @@ const Home = () => {
       </section>
       
       <div className="cat-section">
-        <div className="cat-section__header">
-          <h2 className="cat-section__title">Ürün Kategorilerimiz</h2>
-          <p className="cat-section__sub">İhtiyacınıza göre kategori seçin</p>
+        <div className="section-header">
+          <h2 className="section-title">Ürün Kategorilerimiz</h2>
+          <div className="title-underline"></div>
         </div>
         <div className="cat-grid">
           {CATEGORIES.map((cat) => (
