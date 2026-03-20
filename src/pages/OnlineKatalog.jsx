@@ -244,7 +244,7 @@ const ProductPage = ({ product, lang, email }) => {
         <div className="ck-info-box">
           <div>
             <span className="ck-info-box__label">{lang === 'tr' ? 'UYUMLULUK' : 'COMPLIANCE'}</span>
-            <span className="ck-info-box__value">EASA Part-145 / FAA</span>
+            <span className="ck-info-box__value">EASA / FAA / SHGM</span>
           </div>
           <div>
             <span className="ck-info-box__label">{lang === 'tr' ? 'ÖZELLEŞTİRME' : 'CUSTOMIZABLE'}</span>

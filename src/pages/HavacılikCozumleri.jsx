@@ -71,7 +71,7 @@ const SOLUTIONS = [
 
 /* ── Neden HAVEK ── */
 const WHY = [
-  { title: 'EASA & FAA Uyumlu', desc: 'Part-145 ve Part-147 sertifika gerekliliklerine tam uygun prosedür ve donanım.' },
+  { title: 'EASA / FAA / SHGM Uyumlu', desc: 'Part-145 ve Part-147 sertifika gerekliliklerine tam uygun prosedür ve donanım.' },
   { title: 'Gerçek Uçak Komponentleri', desc: 'Ömrünü tamamlamış gerçek uçak parçaları revize edilerek setlere entegre edilir.' },
   { title: 'Kuruma Özel Tasarım', desc: 'Her eğitim setinin içeriği, kurumun müfredatı ve önceliklerine göre konfigure edilir.' },
   { title: 'Teknik Destek & Bakım', desc: 'Teslimat sonrası teknik destek, yedek parça temini ve saha bakım hizmetleri sunulur.' },
@@ -83,7 +83,7 @@ const WHY = [
 const STATS = [
   { value: '35+', label: 'Eğitim Seti & Ürün' },
   { value: '3', label: 'Çözüm Kategorisi' },
-  { value: 'EASA & FAA', label: 'Sertifika Uyumluluğu' },
+  { value: 'EASA / FAA / SHGM', label: 'Sertifika Uyumluluğu' },
   { value: '%100', label: 'Özelleştirilebilir' },
 ];
 

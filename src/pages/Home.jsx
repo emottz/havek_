@@ -55,7 +55,7 @@ const Home = () => {
     },
     {
       label: 'Simülatörler',
-      sub: 'FAA & EASA Uyumlu',
+      sub: 'EASA / FAA / SHGM Uyumlu',
       desc: 'Pilot ve teknisyen eğitimi için gerçeğe en yakın simülasyon sistemleri.',
       to: '/simulatorler',
       imgs: getImgs(simProds),
@@ -115,7 +115,7 @@ const Home = () => {
         <VideoSection 
           url="https://www.youtube.com/watch?v=QmPlSKByVhs"
           title="PROFESYONEL UÇUŞ ÇÖZÜMLERİ"
-          description="Simülasyon teknolojilerinde sınırları zorlayan, pilot eğitimi ve aviyonik bakımda mükemmeliyeti hedefleyen mühendislik harikası ürünlerimizi keşfedin. FAA ve EASA uyumlu çözümlerle havacılık eğitimini bir üst seviyeye taşıyoruz."
+          description="Simülasyon teknolojilerinde sınırları zorlayan, pilot eğitimi ve aviyonik bakımda mükemmeliyeti hedefleyen mühendislik harikası ürünlerimizi keşfedin. EASA / FAA / SHGM uyumlu çözümlerle havacılık eğitimini bir üst seviyeye taşıyoruz."
           reverse={false}
         />
       </section>

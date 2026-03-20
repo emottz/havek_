@@ -15,7 +15,7 @@ const Simulators = () => {
         <VideoSection
           url="https://www.youtube.com/watch?v=QmPlSKByVhs"
           title="PROFESYONEL UÇUŞ SİMÜLATÖRLERİ"
-          description="FAA ve EASA standartlarına tam uyumlu, modüler ve ölçeklenebilir simülatör çözümlerimiz. Pilot eğitimi için gerçeğe en yakın uçuş deneyimini uygun maliyetlerle sunuyoruz."
+          description="EASA / FAA / SHGM standartlarına tam uyumlu, modüler ve ölçeklenebilir simülatör çözümlerimiz. Pilot eğitimi için gerçeğe en yakın uçuş deneyimini uygun maliyetlerle sunuyoruz."
           reverse={false}
         />
       </section>

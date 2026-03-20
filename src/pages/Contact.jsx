@@ -154,8 +154,7 @@ const Contact = () => {
             )}
 
             <div className="contact-badges">
-              <span className="contact-badge">EASA Uyumlu</span>
-              <span className="contact-badge">FAA Uyumlu</span>
+              <span className="contact-badge">EASA / FAA / SHGM Uyumlu</span>
               <span className="contact-badge">Part 145</span>
               <span className="contact-badge">Part 147</span>
             </div>
