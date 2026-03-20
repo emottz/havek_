@@ -46,23 +46,70 @@ const AdminProductForm = () => {
   const [formatting, setFormatting] = useState(false)
   const { upload, remove, uploading, uploadError, setUploadError } = useImageUpload()
 
-  const handleFormatDescription = async () => {
+  const handleFormatDescription = () => {
     if (!form.description?.trim()) return
     setFormatting(true)
-    try {
-      const { data: { session } } = await supabase.auth.getSession()
-      const res = await supabase.functions.invoke('format-description', {
-        body: { text: form.description, title: form.title },
-        headers: { Authorization: `Bearer ${session.access_token}` }
-      })
-      if (res.data?.formatted) {
-        setForm(f => ({ ...f, description: res.data.formatted }))
+
+    const raw = form.description
+
+    // Already has HTML tags → strip first
+    const plain = raw.replace(/<[^>]+>/g, ' ').replace(/\s{2,}/g, '\n').trim()
+
+    const lines = plain.split(/\n/).map(l => l.trim()).filter(Boolean)
+    let html = ''
+    let listItems = []
+
+    const flushList = () => {
+      if (listItems.length) {
+        html += `<ul>${listItems.map(i => `<li>${i}</li>`).join('')}</ul>`
+        listItems = []
       }
-    } catch (e) {
-      console.error(e)
-    } finally {
-      setFormatting(false)
     }
+
+    // Patterns
+    const isBullet = (l) => /^[-•*]\s+/.test(l) || /^\d+[.)]\s+/.test(l)
+    const isHeader = (l) => {
+      if (l.length > 80) return false
+      if (l.endsWith(':')) return true
+      // ALL CAPS or Title Case short line not ending with period
+      if (!l.endsWith('.') && l === l.toUpperCase() && l.length > 3) return true
+      return false
+    }
+
+    let introDone = false
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i]
+
+      if (isBullet(line)) {
+        const text = line.replace(/^[-•*]\s+/, '').replace(/^\d+[.)]\s+/, '')
+        listItems.push(text)
+        introDone = true
+      } else if (isHeader(line)) {
+        flushList()
+        const title = line.replace(/:$/, '')
+        html += `<h4>${title}</h4>`
+        introDone = true
+      } else {
+        flushList()
+        if (!introDone) {
+          html += `<p>${line}</p>`
+          introDone = true
+        } else {
+          // Could be a header without colon if next line is bullet
+          const nextLine = lines[i + 1]
+          if (nextLine && isBullet(nextLine) && line.length <= 80) {
+            html += `<h4>${line}</h4>`
+          } else {
+            html += `<p>${line}</p>`
+          }
+        }
+      }
+    }
+    flushList()
+
+    setForm(f => ({ ...f, description: html }))
+    setFormatting(false)
   }
 
   const handleAutoTranslate = async () => {
@@ -227,10 +274,10 @@ const AdminProductForm = () => {
               disabled={formatting || !form.description?.trim()}
               style={{ width: 'fit-content' }}
             >
-              {formatting ? '⏳ Düzenleniyor...' : '✨ AI ile Düzenle'}
+              {formatting ? '⏳ Düzenleniyor...' : '✨ Otomatik Düzenle'}
             </button>
             <small style={{ color: '#64748b', marginTop: 4, display: 'block' }}>
-              Gemini AI ham metni başlık ve maddelere dönüştürür. Sonucu düzenleyebilirsiniz.
+              Ham metni otomatik olarak başlık ve maddelere dönüştürür. Sonucu düzenleyebilirsiniz.
             </small>
           </div>
 
