@@ -21,7 +21,7 @@ const Footer = () => {
 
         {/* Brand */}
         <div className="footer-brand">
-          <img src="/newlogo01.png" alt="HAVEK Logo" className="footer-logo" />
+          <img src={`${import.meta.env.BASE_URL}newlogo01.png`} alt="HAVEK Logo" className="footer-logo" />
           <p className="footer-description">
             Havacılıkta standartlara bağlı kalmayın, okulunuza özel projeleri birlikte tasarlayalım.
           </p>

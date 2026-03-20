@@ -4,7 +4,24 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>havek-tmp</title>
+    <title>HAVEK | Havacılık Eğitim Ekipmanları</title>
+    <script>
+      // GitHub Pages SPA redirect handler
+      (function() {
+        var qs = window.location.search;
+        if (qs.indexOf('?p=/') === 0 || qs.indexOf('p=/') !== -1) {
+          var params = qs.slice(1).split('&').reduce(function(p, s) {
+            var r = s.split('='); p[r[0]] = r.slice(1).join('=').replace(/~and~/g, '&'); return p;
+          }, {});
+          if (params.p) {
+            window.history.replaceState(null, null,
+              window.location.pathname.split('/').slice(0, 2).join('/') + params.p +
+              (params.q ? '?' + params.q : '') + window.location.hash
+            );
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

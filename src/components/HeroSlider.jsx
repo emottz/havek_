@@ -3,13 +3,15 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './HeroSlider.css'
 
+const BASE = import.meta.env.BASE_URL
+
 const SLIDES = [
   {
     id: 1,
     eyebrow: 'Uygulamalı Havacılık Eğitimi',
     title: 'Sivil Havacılığın\nTemeli: Eğitim Setleri',
     desc: 'ICAO ve EASA standartlarına uyumlu, gerçek ekipmanlarla donatılmış eğitim setleri. Teknisyenlerinizin arıza analizi ve bakım süreçlerinde uluslararası yeterlilik kazanmasını sağlıyoruz.',
-    img: '/slide01.png',
+    img: `${BASE}slide01.png`,
     cta: 'Eğitim Setlerini Keşfet',
     href: '/egitim-setleri',
   },
@@ -18,7 +20,7 @@ const SLIDES = [
     eyebrow: 'Simülasyon Teknolojileri',
     title: 'Uçuş Simülatörleri &\nRüzgar Tünelleri',
     desc: 'FAA ve EASA düzenlemelerine uygun profesyonel simülasyon altyapısı. Gerçek uçuş koşullarını güvenli ortamda yeniden üretin.',
-    img: '/slide02.png',
+    img: `${BASE}slide02.png`,
     cta: 'Simülatörleri İncele',
     href: '/simulatorler',
   },
@@ -27,7 +29,7 @@ const SLIDES = [
     eyebrow: 'ATA Standartları',
     title: 'ATA Chapter Bazlı\nSistematik Bakım',
     desc: 'Elektrik, hidrolik, yakıt, iniş takımı ve otomatik uçuş sistemlerini modüler yapıda öğretin. ATA iSpec 2200 uyumlu dokümantasyon.',
-    img: '/slide03.png',
+    img: `${BASE}slide03.png`,
     cta: 'ATA Setlerini Gör',
     href: '/ata-chapter-egitim-setleri',
   },

@@ -39,7 +39,7 @@ function App() {
   const isAdmin = window.location.pathname.startsWith('/admin');
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       {!isAdmin && !preloaderDone && (
         <Preloader onComplete={() => setPreloaderDone(true)} />
       )}
