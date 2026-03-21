@@ -94,11 +94,12 @@
     flex-direction: column;
     text-align: center;
     padding: 3rem 0;
-    gap: 3rem;
+    gap: 2rem;
   }
 
   .video-content-text {
     flex: 1;
+    flex-basis: auto;
     align-items: center;
     max-width: 100%;
     min-width: unset;
@@ -113,6 +114,17 @@
     width: 100%;
     max-width: 100%;
     min-width: unset;
+  }
+}
+
+@media (max-width: 600px) {
+  .video-section-container {
+    padding: 2rem 0;
+    gap: 1.5rem;
+  }
+
+  .video-title {
+    font-size: 1.4rem;
   }
 }
 

@@ -441,4 +441,12 @@
   .btn-contact {
     display: none;
   }
+
+  .logo-img {
+    height: 40px;
+  }
+
+  .navbar-container {
+    gap: 0.75rem;
+  }
 }

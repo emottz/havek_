@@ -45,7 +45,8 @@ const FEATURED_IDS = [
 
 const HavacılikCozumleri = () => {
   const { products: allProducts, loading } = useProducts({});
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const pt = (p, field) => (lang === 'en' && p[`${field}_en`]) ? p[`${field}_en`] : p[field];
 
   const SOLUTIONS = [
     {
@@ -210,9 +211,9 @@ const HavacılikCozumleri = () => {
                     </div>
                     <div className="atolye-card__body">
                       <span className="atolye-card__badge">{getBadge(p.category)}</span>
-                      <h3 className="atolye-card__title">{p.title}</h3>
+                      <h3 className="atolye-card__title">{pt(p, 'title')}</h3>
                       <p className="atolye-card__desc">
-                        {p.description ? p.description.replace(/<[^>]+>/g, '').substring(0, 110) + '...' : ''}
+                        {pt(p, 'description') ? pt(p, 'description').replace(/<[^>]+>/g, '').substring(0, 110) + '...' : ''}
                       </p>
                       <div className="atolye-card__footer">
                         <span className="atolye-card__cta">

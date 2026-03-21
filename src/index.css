@@ -123,3 +123,16 @@ button {
 }
 
 /* .bg-decor removed — flat background does not need decorative blobs */
+
+/* ── Global mobile fixes ── */
+@media (max-width: 600px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+}

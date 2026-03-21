@@ -9,7 +9,8 @@ import './AtolyeEgitimSetleri.css';
 
 const Simulators = () => {
   const { products, loading } = useProducts({ category: 'simulator' });
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const pt = (p, field) => (lang === 'en' && p[`${field}_en`]) ? p[`${field}_en`] : p[field];
 
   return (
     <div className="placeholder-page">
@@ -47,10 +48,10 @@ const Simulators = () => {
                   </div>
                   <div className="atolye-card__body">
                     <span className="atolye-card__badge">{t('sim.badge')}</span>
-                    <h3 className="atolye-card__title">{product.title}</h3>
+                    <h3 className="atolye-card__title">{pt(product, 'title')}</h3>
                     <p className="atolye-card__desc">
-                      {product.description
-                        ? product.description.replace(/<[^>]+>/g, '').substring(0, 110) + '...'
+                      {pt(product, 'description')
+                        ? pt(product, 'description').replace(/<[^>]+>/g, '').substring(0, 110) + '...'
                         : t('common.noDesc')}
                     </p>
                     <div className="atolye-card__footer">

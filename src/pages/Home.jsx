@@ -11,7 +11,8 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
 const Home = () => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const pt = (p, field) => (lang === 'en' && p[`${field}_en`]) ? p[`${field}_en`] : p[field];
   const { products, loading } = useProducts();
   const { products: atolyeProds } = useProducts({ category: 'atolye' });
   const { products: ataProds }    = useProducts({ category: 'ata-chapter' });
@@ -150,10 +151,10 @@ const Home = () => {
                       </div>
                       <div className="atolye-card__body">
                         <span className="atolye-card__badge">{t('home.badge.trainingSet')}</span>
-                        <h3 className="atolye-card__title">{product.title}</h3>
+                        <h3 className="atolye-card__title">{pt(product, 'title')}</h3>
                         <p className="atolye-card__desc">
-                          {product.description
-                            ? product.description.replace(/<[^>]+>/g, '').substring(0, 100) + '...'
+                          {pt(product, 'description')
+                            ? pt(product, 'description').replace(/<[^>]+>/g, '').substring(0, 100) + '...'
                             : t('common.noDesc')}
                         </p>
                         <div className="atolye-card__footer">

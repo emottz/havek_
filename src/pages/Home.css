@@ -446,4 +446,35 @@
   .cta-content h2 {
     font-size: 2rem;
   }
+
+  .cat-section {
+    padding: 0 1rem;
+  }
+
+  /* Hide carousel arrows on mobile — use swipe */
+  .product-carousel-btn {
+    display: none;
+  }
+
+  .product-carousel-wrapper {
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .cat-section {
+    padding: 0 0.75rem;
+  }
+
+  .cta-content {
+    padding: 2rem 1.25rem;
+  }
+
+  .cta-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
 }
