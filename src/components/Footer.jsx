@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSiteSettings } from '../hooks/useSiteSettings';
 import { getPlatform } from '../lib/socialPlatforms';
+import { useLanguage } from '../context/LanguageContext';
 import './Footer.css';
 
 const SocialIcon = ({ platform }) => (
@@ -10,6 +11,7 @@ const SocialIcon = ({ platform }) => (
 const Footer = () => {
   const { settings } = useSiteSettings();
   const { phone, email, address, map_query, socials = [] } = settings;
+  const { t } = useLanguage();
 
   const mapSrc = map_query
     ? `https://maps.google.com/maps?q=${encodeURIComponent(map_query)}&output=embed&hl=tr&z=15`
@@ -19,12 +21,9 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
 
-        {/* Brand */}
         <div className="footer-brand">
           <img src="/newlogo01.png" alt="HAVEK Logo" className="footer-logo" />
-          <p className="footer-description">
-            Havacılıkta standartlara bağlı kalmayın, okulunuza özel projeleri birlikte tasarlayalım.
-          </p>
+          <p className="footer-description">{t('footer.desc')}</p>
           {socials.length > 0 && (
             <div className="footer-socials">
               {socials.map(s => (
@@ -44,22 +43,20 @@ const Footer = () => {
           )}
         </div>
 
-        {/* Links */}
         <div className="footer-links">
-          <h4>Hızlı Bağlantılar</h4>
+          <h4>{t('footer.links')}</h4>
           <ul>
-            <li><a href="/simulatorler">Simülatörler</a></li>
-            <li><a href="/atolye-egitim-setleri">Atölye Eğitim Setleri</a></li>
-            <li><a href="/ata-chapter-egitim-setleri">ATA Chapter Bazlı Setler</a></li>
-            <li><a href="/havacilik-cozumleri">Havacılık Çözümleri</a></li>
-            <li><a href="/online-katalog">Online Katalog</a></li>
-            <li><a href="/iletisim">Bize Ulaşın</a></li>
+            <li><a href="/simulatorler">{t('footer.link.simulators')}</a></li>
+            <li><a href="/atolye-egitim-setleri">{t('footer.link.workshop')}</a></li>
+            <li><a href="/ata-chapter-egitim-setleri">{t('footer.link.ata')}</a></li>
+            <li><a href="/havacilik-cozumleri">{t('footer.link.solutions')}</a></li>
+            <li><a href="/online-katalog">{t('footer.link.catalog')}</a></li>
+            <li><a href="/iletisim">{t('footer.link.contact')}</a></li>
           </ul>
         </div>
 
-        {/* Contact */}
         <div className="footer-contact">
-          <h4>İletişim</h4>
+          <h4>{t('footer.contact')}</h4>
           <ul className="footer-contact-list">
             {address && (
               <li>
@@ -84,7 +81,6 @@ const Footer = () => {
 
       </div>
 
-      {/* Map */}
       {mapSrc && (
         <div className="footer-map">
           <iframe
@@ -101,7 +97,7 @@ const Footer = () => {
       )}
 
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} HAVEK | Tüm hakları saklıdır.</p>
+        <p>&copy; {new Date().getFullYear()} HAVEK | {t('footer.rights')}</p>
       </div>
     </footer>
   );

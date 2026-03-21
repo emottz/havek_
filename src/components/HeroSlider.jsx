@@ -1,41 +1,10 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 import './HeroSlider.css'
 
-const SLIDES = [
-  {
-    id: 1,
-    eyebrow: 'Uygulamalı Havacılık Eğitimi',
-    title: 'Sivil Havacılığın\nTemeli: Eğitim Setleri',
-    desc: 'EASA / FAA / SHGM standartlarına uyumlu, gerçek ekipmanlarla donatılmış eğitim setleri. Teknisyenlerinizin arıza analizi ve bakım süreçlerinde uluslararası yeterlilik kazanmasını sağlıyoruz.',
-    img: '/slide01.png',
-    cta: 'Eğitim Setlerini Keşfet',
-    href: '/egitim-setleri',
-  },
-  {
-    id: 2,
-    eyebrow: 'Simülasyon Teknolojileri',
-    title: 'SİMÜLATÖRLER',
-    desc: 'EASA / FAA / SHGM düzenlemelerine uygun profesyonel simülasyon altyapısı. Gerçek uçuş koşullarını güvenli ortamda yeniden üretin.',
-    img: '/slide02yeni.png',
-    cta: 'Simülatörleri İncele',
-    href: '/simulatorler',
-  },
-  {
-    id: 3,
-    eyebrow: 'ATA Standartları',
-    title: 'ATA Chapter Bazlı\nSistematik Bakım',
-    desc: 'Elektrik, hidrolik, yakıt, iniş takımı ve otomatik uçuş sistemlerini modüler yapıda öğretin. ATA iSpec 2200 uyumlu dokümantasyon.',
-    img: '/slide03.png',
-    cta: 'ATA Setlerini Gör',
-    href: '/ata-chapter-egitim-setleri',
-  },
-]
-
 const DELAY = 5500
-
-// Expo-out easing — industry standard (Apple, Stripe)
 const EASE = [0.16, 1, 0.3, 1]
 
 const textVariants = {
@@ -53,11 +22,42 @@ export default function HeroSlider() {
   const [progressKey, setProgressKey] = useState(0)
   const intervalRef = useRef(null)
   const touchX = useRef(null)
+  const { t } = useLanguage()
+
+  const SLIDES = [
+    {
+      id: 1,
+      eyebrow: t('hero.slide1.eyebrow'),
+      title: t('hero.slide1.title'),
+      desc: t('hero.slide1.desc'),
+      img: '/slide01.png',
+      cta: t('hero.slide1.cta'),
+      href: '/egitim-setleri',
+    },
+    {
+      id: 2,
+      eyebrow: t('hero.slide2.eyebrow'),
+      title: t('hero.slide2.title'),
+      desc: t('hero.slide2.desc'),
+      img: '/slide02yeni.png',
+      cta: t('hero.slide2.cta'),
+      href: '/simulatorler',
+    },
+    {
+      id: 3,
+      eyebrow: t('hero.slide3.eyebrow'),
+      title: t('hero.slide3.title'),
+      desc: t('hero.slide3.desc'),
+      img: '/slide03.png',
+      cta: t('hero.slide3.cta'),
+      href: '/ata-chapter-egitim-setleri',
+    },
+  ]
 
   const goTo = useCallback((next) => {
     setIndex(((next % SLIDES.length) + SLIDES.length) % SLIDES.length)
     setProgressKey((k) => k + 1)
-  }, [])
+  }, [SLIDES.length])
 
   const resetInterval = useCallback(() => {
     clearInterval(intervalRef.current)
@@ -65,7 +65,7 @@ export default function HeroSlider() {
       setProgressKey((k) => k + 1)
       return (i + 1) % SLIDES.length
     }), DELAY)
-  }, [])
+  }, [SLIDES.length])
 
   useEffect(() => {
     resetInterval()
@@ -92,7 +92,6 @@ export default function HeroSlider() {
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
-      {/* ── Crossfade backgrounds ── */}
       {SLIDES.map((s, i) => (
         <div key={s.id} className={`hs__bg${i === index ? ' hs__bg--active' : ''}`}>
           <img
@@ -104,10 +103,8 @@ export default function HeroSlider() {
         </div>
       ))}
 
-      {/* ── Gradient overlay ── */}
       <div className="hs__overlay" />
 
-      {/* ── Text content ── */}
       <div className="hs__content">
         <AnimatePresence mode="wait">
           <motion.div key={index} className="hs__text">
@@ -164,7 +161,6 @@ export default function HeroSlider() {
         </AnimatePresence>
       </div>
 
-      {/* ── Bottom nav bar ── */}
       <div className="hs__nav">
         <span className="hs__counter">
           <strong>{pad(index + 1)}</strong>

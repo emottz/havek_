@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin, CheckCircle, AlertCircle, Loader } from 'lucide-re
 import { useSiteSettings } from '../hooks/useSiteSettings';
 import { getPlatform } from '../lib/socialPlatforms';
 import { supabase } from '../lib/supabase';
+import { useLanguage } from '../context/LanguageContext';
 import './Contact.css';
 
 const SocialIcon = ({ platform }) => (
@@ -13,11 +14,12 @@ const SocialIcon = ({ platform }) => (
 const Contact = () => {
   const [searchParams] = useSearchParams();
   const urunParam = searchParams.get('urun') || '';
+  const { t } = useLanguage();
 
   const [form, setForm] = useState({
     name: '', company: '', phone: '', email: '', product: urunParam, message: '',
   });
-  const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [status, setStatus] = useState('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e) => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
@@ -30,7 +32,6 @@ const Contact = () => {
     setStatus('sending');
     setErrorMsg('');
     try {
-      // Her zaman Supabase'e kaydet
       const { error: dbError } = await supabase
         .from('contact_submissions')
         .insert({
@@ -42,9 +43,8 @@ const Contact = () => {
           message: form.message,
         });
 
-      if (dbError) throw new Error('Mesaj kaydedilemedi. Lütfen tekrar deneyin.');
+      if (dbError) throw new Error(t('contact.err.db'));
 
-      // Web3Forms ile de email göndermeyi dene (başarısız olsa bile form gönderildi sayılır)
       if (web3forms_key) {
         try {
           await fetch('https://api.web3forms.com/submit', {
@@ -58,7 +58,7 @@ const Contact = () => {
             }),
           });
         } catch {
-          // Email gönderilemese bile devam et, DB'ye kaydedildi
+          // Email gönderilemese bile devam et
         }
       }
 
@@ -66,7 +66,7 @@ const Contact = () => {
       setForm({ name: '', company: '', phone: '', email: '', product: '', message: '' });
     } catch (err) {
       setStatus('error');
-      setErrorMsg(err.message || 'Bir hata oluştu. Lütfen tekrar deneyin.');
+      setErrorMsg(err.message || t('contact.err.generic'));
     }
   };
 
@@ -78,11 +78,9 @@ const Contact = () => {
     <div className="contact-page">
       <div className="contact-hero">
         <div className="container">
-          <p className="contact-hero__label">İletişim</p>
-          <h1 className="contact-hero__title">Bizimle İletişime Geçin</h1>
-          <p className="contact-hero__desc">
-            Eğitim setleri, simülatörler ve özel projeler için teklif almak ya da daha fazla bilgi edinmek için bize ulaşın.
-          </p>
+          <p className="contact-hero__label">{t('contact.hero.label')}</p>
+          <h1 className="contact-hero__title">{t('contact.hero.title')}</h1>
+          <p className="contact-hero__desc">{t('contact.hero.desc')}</p>
         </div>
       </div>
 
@@ -90,17 +88,15 @@ const Contact = () => {
         <div className="contact-grid">
 
           <div className="contact-info-card">
-            <h2>İletişim Bilgileri</h2>
-            <p className="contact-info-desc">
-              HAVEK olarak havacılık eğitim ekipmanları konusunda uzman ekibimizle size en uygun çözümü sunmak için hazırız.
-            </p>
+            <h2>{t('contact.info.title')}</h2>
+            <p className="contact-info-desc">{t('contact.info.desc')}</p>
 
             <div className="contact-items">
               {phone && (
                 <div className="contact-item">
                   <div className="contact-item__icon"><Phone size={20} /></div>
                   <div>
-                    <span className="contact-item__label">Telefon</span>
+                    <span className="contact-item__label">{t('contact.phone')}</span>
                     <a href={`tel:${phone.replace(/\s/g, '')}`} className="contact-item__value">{phone}</a>
                   </div>
                 </div>
@@ -109,7 +105,7 @@ const Contact = () => {
                 <div className="contact-item">
                   <div className="contact-item__icon"><Mail size={20} /></div>
                   <div>
-                    <span className="contact-item__label">E-posta</span>
+                    <span className="contact-item__label">{t('contact.email')}</span>
                     <a href={`mailto:${email}`} className="contact-item__value">{email}</a>
                   </div>
                 </div>
@@ -118,7 +114,7 @@ const Contact = () => {
                 <div className="contact-item">
                   <div className="contact-item__icon"><MapPin size={20} /></div>
                   <div>
-                    <span className="contact-item__label">Adres</span>
+                    <span className="contact-item__label">{t('contact.address')}</span>
                     <a
                       href={map_query ? `https://maps.google.com/?q=${encodeURIComponent(map_query)}` : '#'}
                       target="_blank"
@@ -154,54 +150,54 @@ const Contact = () => {
             )}
 
             <div className="contact-badges">
-              <span className="contact-badge">EASA / FAA / SHGM Uyumlu</span>
+              <span className="contact-badge">{t('contact.badge.compliance')}</span>
               <span className="contact-badge">Part 145</span>
               <span className="contact-badge">Part 147</span>
             </div>
           </div>
 
           <div className="contact-form-card">
-            <h2>Teklif Talebi</h2>
+            <h2>{t('contact.form.title')}</h2>
 
             {status === 'success' ? (
               <div className="form-success">
                 <CheckCircle size={48} />
-                <h3>Mesajınız İletildi!</h3>
-                <p>En kısa sürede size geri dönüş yapacağız.</p>
-                <button className="btn-submit" onClick={() => setStatus('idle')}>Yeni Mesaj Gönder</button>
+                <h3>{t('contact.success.title')}</h3>
+                <p>{t('contact.success.desc')}</p>
+                <button className="btn-submit" onClick={() => setStatus('idle')}>{t('contact.success.btn')}</button>
               </div>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-group">
-                  <label>Ad Soyad</label>
-                  <input name="name" type="text" placeholder="Adınız Soyadınız" required
+                  <label>{t('contact.form.name')}</label>
+                  <input name="name" type="text" placeholder={t('contact.form.namePh')} required
                     value={form.name} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                  <label>Kurum / Şirket</label>
-                  <input name="company" type="text" placeholder="Kurum veya şirket adı"
+                  <label>{t('contact.form.company')}</label>
+                  <input name="company" type="text" placeholder={t('contact.form.companyPh')}
                     value={form.company} onChange={handleChange} />
                 </div>
                 <div className="form-row">
                   <div className="form-group">
-                    <label>Telefon</label>
+                    <label>{t('contact.form.phone')}</label>
                     <input name="phone" type="tel" placeholder="+90 5XX XXX XX XX"
                       value={form.phone} onChange={handleChange} />
                   </div>
                   <div className="form-group">
-                    <label>E-posta</label>
+                    <label>{t('contact.form.email')}</label>
                     <input name="email" type="email" placeholder="ornek@email.com" required
                       value={form.email} onChange={handleChange} />
                   </div>
                 </div>
                 <div className="form-group">
-                  <label>İlgilendiğiniz Ürün / Konu</label>
-                  <input name="product" type="text" placeholder="Ürün adı veya konu"
+                  <label>{t('contact.form.product')}</label>
+                  <input name="product" type="text" placeholder={t('contact.form.productPh')}
                     value={form.product} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                  <label>Mesajınız</label>
-                  <textarea name="message" rows={4} placeholder="Detaylı açıklama veya talepleriniz..."
+                  <label>{t('contact.form.message')}</label>
+                  <textarea name="message" rows={4} placeholder={t('contact.form.messagePh')}
                     value={form.message} onChange={handleChange} />
                 </div>
                 {status === 'error' && (
@@ -212,8 +208,8 @@ const Contact = () => {
                 )}
                 <button type="submit" className="btn-submit" disabled={status === 'sending'}>
                   {status === 'sending'
-                    ? <><Loader size={16} className="spin" /> Gönderiliyor...</>
-                    : 'TALEP GÖNDER'}
+                    ? <><Loader size={16} className="spin" /> {t('contact.form.sending')}</>
+                    : t('contact.form.submit')}
                 </button>
               </form>
             )}
@@ -232,7 +228,7 @@ const Contact = () => {
                 rel="noreferrer"
                 className="contact-map__link"
               >
-                Google Maps'te Aç ↗
+                {t('contact.map.open')}
               </a>
             </div>
             <iframe

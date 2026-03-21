@@ -8,6 +8,7 @@ import { useProduct } from '../hooks/useProducts';
 import { useSiteSettings } from '../hooks/useSiteSettings';
 import { SkeletonProductDetail } from '../components/Skeleton';
 import { TechnicalSheet } from '../components/TechnicalSheet';
+import { useLanguage } from '../context/LanguageContext';
 import './ProductDetail.css';
 
 const ProductDetail = () => {
@@ -15,8 +16,9 @@ const ProductDetail = () => {
   const { product, loading, error } = useProduct(id);
   const { settings } = useSiteSettings();
   const email = settings.email || 'info@havek.com.tr';
+  const { lang, t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [pdfLoading, setPdfLoading] = useState(false); // false | 'tr' | 'en'
+  const [pdfLoading, setPdfLoading] = useState(false);
 
   const fetchImageAsDataUrl = async (src) => {
     const url = src.startsWith('/') ? `${window.location.origin}${src}` : src;
@@ -33,8 +35,8 @@ const ProductDetail = () => {
     }
   };
 
-  const handleDownloadPdf = async (lang = 'tr') => {
-    setPdfLoading(lang);
+  const handleDownloadPdf = async (pdfLang = 'tr') => {
+    setPdfLoading(pdfLang);
     try {
       const rawImages = (product.images || []).filter(Boolean).slice(0, 3);
       const [resolvedImages, logoDataUrl] = await Promise.all([
@@ -42,12 +44,12 @@ const ProductDetail = () => {
         fetchImageAsDataUrl('/Beyaz_logo.png'),
       ]);
       const blob = await pdf(
-        <TechnicalSheet product={product} lang={lang} resolvedImages={resolvedImages} email={email} logoDataUrl={logoDataUrl} />
+        <TechnicalSheet product={product} lang={pdfLang} resolvedImages={resolvedImages} email={email} logoDataUrl={logoDataUrl} />
       ).toBlob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `HAVEK_${product.id}_${lang === 'en' ? 'technical-document' : 'teknik-dokuman'}.pdf`;
+      a.download = `HAVEK_${product.id}_${pdfLang === 'en' ? 'technical-document' : 'teknik-dokuman'}.pdf`;
       a.click();
       URL.revokeObjectURL(url);
     } finally {
@@ -68,22 +70,25 @@ const ProductDetail = () => {
     return (
       <div className="product-not-found container">
         <AlertCircle size={64} color="#dc3545" />
-        <h2>Ürün Bulunamadı</h2>
-        <p>Aradığınız eğitim seti sistemimizde kayıtlı değildir veya taşınmış olabilir.</p>
+        <h2>{t('pd.notFound.title')}</h2>
+        <p>{t('pd.notFound.desc')}</p>
         <Link to="/egitim-setleri" className="btn-back">
-          <ArrowLeft size={20} /> EĞİTİM SETLERİNE DÖN
+          <ArrowLeft size={20} /> {t('pd.notFound.back')}
         </Link>
       </div>
     );
   }
 
+  const displayTitle = (lang === 'en' && product.title_en) ? product.title_en : product.title;
+  const displayDesc = (lang === 'en' && product.description_en) ? product.description_en : product.description;
+
   return (
     <div className="product-detail-page">
       <div className="container">
         <nav className="breadcrumb">
-          <Link to="/egitim-setleri">Eğitim Setleri</Link>
+          <Link to="/egitim-setleri">{t('pd.breadcrumb')}</Link>
           <span className="separator">/</span>
-          <span className="current">{product.title}</span>
+          <span className="current">{displayTitle}</span>
         </nav>
 
         <div className="product-layout">
@@ -92,10 +97,10 @@ const ProductDetail = () => {
               <div className="gallery-main">
                 <div className="main-image-container">
                   <AnimatePresence mode="wait">
-                    <motion.img 
+                    <motion.img
                       key={activeIndex}
-                      src={product.images[activeIndex]} 
-                      alt={product.title} 
+                      src={product.images[activeIndex]}
+                      alt={displayTitle}
                       className="active-main-image"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -107,12 +112,12 @@ const ProductDetail = () => {
                 {product.images.length > 1 && (
                     <div className="gallery-grid">
                         {product.images.map((img, idx) => (
-                            <div 
-                              key={idx} 
+                            <div
+                              key={idx}
                               className={`gallery-item ${idx === activeIndex ? 'active' : ''}`}
                               onClick={() => setActiveIndex(idx)}
                             >
-                                <img src={img} alt={`${product.title} - ${idx + 1}`} />
+                                <img src={img} alt={`${displayTitle} - ${idx + 1}`} />
                             </div>
                         ))}
                     </div>
@@ -121,43 +126,43 @@ const ProductDetail = () => {
             ) : (
               <div className="no-image-placeholder">
                 <Camera size={64} />
-                <p>Görüntülenecek resim bulunmuyor.</p>
+                <p>{t('pd.noImage')}</p>
               </div>
             )}
           </div>
 
           <div className="product-info glass-card">
-            <h1 className="product-title">{product.title}</h1>
+            <h1 className="product-title">{displayTitle}</h1>
             <div className="title-underline"></div>
-            
+
             <div className="product-meta">
               <div className="meta-item">
                 <Package size={20} />
-                <span>Kategori: Havacılık Eğitim Seti</span>
+                <span>{t('pd.category')}</span>
               </div>
               <div className="meta-item">
                 <Layout size={20} />
-                <span>Modüler Tasarım</span>
+                <span>{t('pd.modular')}</span>
               </div>
             </div>
 
             <div className="product-description">
-              <h3>Ürün Açıklaması</h3>
-              {product.description
-                ? <div className="product-desc-body" dangerouslySetInnerHTML={{ __html: product.description }} />
-                : <p>Bu ürün için henüz detaylı bir açıklama girilmemiştir. Lütfen katalog üzerinden detayları inceleyiniz.</p>
+              <h3>{t('pd.description')}</h3>
+              {displayDesc
+                ? <div className="product-desc-body" dangerouslySetInnerHTML={{ __html: displayDesc }} />
+                : <p>{t('pd.noDesc')}</p>
               }
             </div>
 
             <div className="product-actions">
-              <a href={`/iletisim?urun=${encodeURIComponent(product.title)}`} className="btn-cta">TEKLİF ALIN</a>
+              <a href={`/iletisim?urun=${encodeURIComponent(product.title)}`} className="btn-cta">{t('pd.quote')}</a>
               <button
                 className="btn-secondary btn-pdf"
                 onClick={() => handleDownloadPdf('tr')}
                 disabled={!!pdfLoading}
               >
                 <FileDown size={16} />
-                {pdfLoading === 'tr' ? 'Hazırlanıyor...' : 'TEKNİK DÖKÜMAN (TR)'}
+                {pdfLoading === 'tr' ? t('pd.preparing') : t('pd.pdfTR')}
               </button>
               <button
                 className="btn-secondary btn-pdf"
@@ -165,7 +170,7 @@ const ProductDetail = () => {
                 disabled={!!pdfLoading}
               >
                 <FileDown size={16} />
-                {pdfLoading === 'en' ? 'Preparing...' : 'TECHNICAL DOCUMENT (EN)'}
+                {pdfLoading === 'en' ? t('pd.preparing') : t('pd.pdfEN')}
               </button>
             </div>
           </div>

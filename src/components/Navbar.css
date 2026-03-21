@@ -348,6 +348,74 @@
   background: #2e6da4;
 }
 
+/* ── Language Toggle ── */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #1c2b3a;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  opacity: 0.45;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.lang-btn.active {
+  opacity: 1;
+  color: #2e6da4;
+}
+
+.lang-btn:hover {
+  opacity: 0.8;
+}
+
+.lang-sep {
+  font-size: 0.7rem;
+  color: #1c2b3a;
+  opacity: 0.25;
+  user-select: none;
+}
+
+.navbar.dark-hero .lang-btn {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar.dark-hero .lang-btn.active {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.navbar.dark-hero .lang-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.mobile-lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.mobile-lang-toggle .lang-btn {
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.mobile-lang-toggle .lang-btn.active {
+  background: rgba(46,109,164,0.1);
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .navbar-links {

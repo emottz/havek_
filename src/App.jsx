@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { LanguageProvider } from './context/LanguageContext';
 import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <LanguageProvider>
       {!isAdmin && !preloaderDone && (
         <Preloader onComplete={() => setPreloaderDone(true)} />
       )}
@@ -63,6 +65,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </SiteLayout>
+      </LanguageProvider>
     </BrowserRouter>
   );
 }
