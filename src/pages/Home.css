@@ -1,8 +1,11 @@
 .home-page {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
   padding-bottom: 2rem;
+}
+
+.home-page > * + * {
+  margin-top: 3rem;
 }
 
 .hero-section {
