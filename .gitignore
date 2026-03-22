@@ -13,6 +13,9 @@ tmp_catalog/
 
 # Image clutter (root level)
 *.PNG
+!public/01.png
+!public/02.png
+!public/03.png
 set01.png
 slide01.png
 slide02.png
