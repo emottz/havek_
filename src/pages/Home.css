@@ -10,7 +10,8 @@
 
 .hero-section {
   width: 100%;
-  background: #0a1422;
+  overflow: hidden;
+  margin-top: -20px;
 }
 
 /* ── Category Section ── */
