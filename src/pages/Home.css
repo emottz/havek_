@@ -499,13 +499,29 @@
     padding: 1rem 0;
   }
 
+  /* Carousel slide: kısmi görünüm için %85 genişlik */
   .product-embla__slide {
+    flex: 0 0 85%;
     padding: 0.5rem 0.5rem 0.5rem 0;
   }
 
   .product-embla {
     padding: 1rem 0;
     margin: -1rem 0;
+  }
+
+  /* Carousel kartlarında image daha kısa */
+  .product-embla__slide .atolye-card__image-wrap {
+    aspect-ratio: 3 / 2;
+  }
+
+  .product-embla__slide .atolye-card__body {
+    padding: 1rem;
+  }
+
+  .product-embla__slide .atolye-card__desc {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
   }
 }
 
