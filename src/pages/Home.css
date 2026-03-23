@@ -456,13 +456,20 @@
     padding: 0 1rem;
   }
 
-  /* Hide carousel arrows on mobile — use swipe */
+  /* Mobilde ok butonları küçük ama görünür */
   .product-carousel-btn {
-    display: none;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
   }
 
   .product-carousel-wrapper {
-    gap: 0;
+    gap: 0.4rem;
+  }
+
+  /* Tek kart göster */
+  .product-embla__slide {
+    flex: 0 0 100%;
   }
 }
 
@@ -499,38 +506,36 @@
     padding: 1rem 0;
   }
 
-  /* Carousel: 2 kart görünsün */
+  /* Tek kart — tam embla genişliği */
   .product-embla__slide {
-    flex: 0 0 50%;
-    padding: 0.25rem 0.35rem 0.25rem 0;
+    flex: 0 0 100%;
+    padding: 0.25rem 0;
   }
 
   .product-embla {
-    padding: 0.75rem 0;
-    margin: -0.75rem 0;
+    padding: 0.5rem 0;
+    margin: -0.5rem 0;
   }
 
-  /* Küçük kart stili */
+  /* Kart içi kompakt */
   .product-embla__slide .atolye-card__image-wrap {
-    aspect-ratio: 4 / 3;
-    height: 130px;
+    height: 160px;
+    aspect-ratio: unset;
   }
 
   .product-embla__slide .atolye-card__body {
-    padding: 0.65rem;
+    padding: 0.75rem;
   }
 
   .product-embla__slide .atolye-card__badge {
-    font-size: 0.6rem;
-    padding: 0.2rem 0.5rem;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.6rem;
     margin-bottom: 0.4rem;
   }
 
   .product-embla__slide .atolye-card__title {
-    font-size: 0.8rem;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    margin-bottom: 0.4rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.3rem;
   }
 
   .product-embla__slide .atolye-card__desc {
@@ -539,10 +544,6 @@
 
   .product-embla__slide .atolye-card__footer {
     padding-top: 0.5rem;
-  }
-
-  .product-embla__slide .atolye-card__cta {
-    font-size: 0.65rem;
   }
 }
 
