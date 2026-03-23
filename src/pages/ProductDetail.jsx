@@ -79,8 +79,8 @@ const ProductDetail = () => {
     );
   }
 
-  const displayTitle = (lang === 'en' && product.title_en) ? product.title_en : product.title;
-  const displayDesc = (lang === 'en' && product.description_en) ? product.description_en : product.description;
+  const displayTitle = (lang !== 'tr' && product[`title_${lang}`]) ? product[`title_${lang}`] : product.title;
+  const displayDesc = (lang !== 'tr' && product[`description_${lang}`]) ? product[`description_${lang}`] : product.description;
 
   return (
     <div className="product-detail-page">

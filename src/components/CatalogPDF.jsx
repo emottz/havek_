@@ -116,7 +116,7 @@ const s = StyleSheet.create({
 });
 
 /* ── Yardımcılar ── */
-const getTitle = (p, lang) => lang === 'en' ? (p.title_en || p.title) : p.title;
+const getTitle = (p, lang) => (lang !== 'tr' && p[`title_${lang}`]) ? p[`title_${lang}`] : (lang !== 'tr' && p.title_en ? p.title_en : p.title);
 const getCat   = (p)       => p.categories?.[0] || p.category || '';
 
 /* ── CatalogPDF ── */

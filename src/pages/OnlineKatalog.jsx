@@ -3,7 +3,7 @@ import { pdf } from '@react-pdf/renderer';
 import { useProducts } from '../hooks/useProducts';
 import { useSiteSettings } from '../hooks/useSiteSettings';
 import { parseProductHTML } from '../lib/parseProductHTML';
-import { SECTION_TR_TO_EN, CATEGORY_EN } from '../lib/pdfTranslations';
+import { SECTION_TRANSLATIONS } from '../lib/pdfTranslations';
 import CatalogPDF from '../components/CatalogPDF';
 import './OnlineKatalog.css';
 
@@ -13,10 +13,16 @@ const CATEGORY_ORDER = ['simulator', 'atolye', 'ata-chapter'];
 const CAT_LABEL = {
   tr: { simulator: 'Simülatörler', atolye: 'Atölye Eğitim Setleri', 'ata-chapter': 'ATA Chapter Bazlı Setler' },
   en: { simulator: 'Simulators',   atolye: 'Workshop Training Sets', 'ata-chapter': 'ATA Chapter Based Sets'   },
+  fr: { simulator: 'Simulateurs',  atolye: "Ensembles d'atelier",    'ata-chapter': 'Ensembles ATA Chapter'    },
+  de: { simulator: 'Simulatoren',  atolye: 'Werkstatt-Trainingssets', 'ata-chapter': 'ATA-Kapitel-Sets'        },
+  ja: { simulator: 'シミュレーター', atolye: 'ワークショップ訓練セット', 'ata-chapter': 'ATAチャプターセット'       },
 };
 const CAT_BADGE = {
-  tr: { simulator: 'Simülatör', atolye: 'Atölye Seti', 'ata-chapter': 'ATA Chapter' },
-  en: { simulator: 'Simulator', atolye: 'Workshop Set', 'ata-chapter': 'ATA Chapter' },
+  tr: { simulator: 'Simülatör',  atolye: 'Atölye Seti',   'ata-chapter': 'ATA Chapter' },
+  en: { simulator: 'Simulator',  atolye: 'Workshop Set',   'ata-chapter': 'ATA Chapter' },
+  fr: { simulator: 'Simulateur', atolye: "Ensemble d'atelier", 'ata-chapter': 'ATA Chapter' },
+  de: { simulator: 'Simulator',  atolye: 'Werkstattset',   'ata-chapter': 'ATA-Kapitel' },
+  ja: { simulator: 'シミュレーター', atolye: 'ワークショップセット', 'ata-chapter': 'ATAチャプター' },
 };
 const CAT_DESC = {
   tr: {
@@ -29,13 +35,28 @@ const CAT_DESC = {
     atolye:        'Safety wire, sealing, tubing, EWIS and riveting applications.',
     'ata-chapter': 'Hydraulic, fuel, pneumatic, electrical and oxygen system training sets.',
   },
+  fr: {
+    simulator:     'Solutions simulateurs incluant cabine type Cessna et soufflerie.',
+    atolye:        'Fil de sécurité, joint, tuyauterie, EWIS et applications de rivetage.',
+    'ata-chapter': 'Ensembles de formation sur les systèmes hydraulique, carburant, pneumatique, électrique et oxygène.',
+  },
+  de: {
+    simulator:     'Simulatorlösungen inklusive Cessna-Typ Kabine und Windkanal.',
+    atolye:        'Sicherungsdraht, Abdichtung, Rohrleitung, EWIS und Niet-Anwendungen.',
+    'ata-chapter': 'Trainingssets für Hydraulik-, Kraftstoff-, Pneumatik-, Elektrik- und Sauerstoffsysteme.',
+  },
+  ja: {
+    simulator:     'セスナ型コックピットと風洞を含むシミュレーターソリューション。',
+    atolye:        'セーフティワイヤー、シーリング、配管、EWIS、リベット応用。',
+    'ata-chapter': '油圧、燃料、空気圧、電気、酸素システム訓練セット。',
+  },
 };
 
 const getCat = (p) => p.categories?.[0] || p.category || '';
-const getTitle = (p, lang) => lang === 'en' ? (p.title_en || p.title) : p.title;
-const getDesc  = (p, lang) => lang === 'en' ? (p.description_en || p.description) : p.description;
-const translateSection = (title, lang) => lang === 'en' ? (SECTION_TR_TO_EN[title] || title) : title;
-const catBadge = (cat, lang) => lang === 'en' ? (CATEGORY_EN[cat] || cat) : (CAT_BADGE.tr[cat] || cat);
+const getTitle = (p, lang) => (lang !== 'tr' && p[`title_${lang}`]) ? p[`title_${lang}`] : p.title;
+const getDesc  = (p, lang) => (lang !== 'tr' && p[`description_${lang}`]) ? p[`description_${lang}`] : p.description;
+const translateSection = (title, lang) => (lang !== 'tr' && SECTION_TRANSLATIONS[lang]?.[title]) ? SECTION_TRANSLATIONS[lang][title] : title;
+const catBadge = (cat, lang) => (CAT_BADGE[lang] || CAT_BADGE.tr)[cat] || cat;
 
 /* ── Sayfa tipleri ── */
 function buildPages(products) {
@@ -410,13 +431,18 @@ const OnlineKatalog = () => {
             <polyline points="14 2 14 8 20 8"/>
           </svg>
           <span className="katalog-toolbar-title">
-            {lang === 'tr' ? 'HAVEK Ürün Kataloğu' : 'HAVEK Product Catalog'}
+            {lang === 'tr' ? 'HAVEK Ürün Kataloğu' : lang === 'fr' ? 'Catalogue HAVEK' : lang === 'de' ? 'HAVEK Produktkatalog' : lang === 'ja' ? 'HAVEK製品カタログ' : 'HAVEK Product Catalog'}
           </span>
         </div>
         <div className="katalog-toolbar-right">
           <div className="katalog-lang-toggle">
-            <button className={`katalog-lang-btn ${lang === 'tr' ? 'active' : ''}`} onClick={() => { setLang('tr'); setPageIdx(0); }}>TR</button>
-            <button className={`katalog-lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => { setLang('en'); setPageIdx(0); }}>EN</button>
+            {['tr','en','fr','de','ja'].map(code => (
+              <button
+                key={code}
+                className={`katalog-lang-btn ${lang === code ? 'active' : ''}`}
+                onClick={() => { setLang(code); setPageIdx(0); }}
+              >{code.toUpperCase()}</button>
+            ))}
           </div>
           <button className="katalog-download-btn" onClick={handleDownloadPdf} disabled={isBusy || loading}>
             {isBusy ? (

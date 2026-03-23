@@ -353,72 +353,164 @@
   background: #2e6da4;
 }
 
-/* ── Language Toggle ── */
-.lang-toggle {
+/* ── Language Dropdown ── */
+.lang-dropdown {
+  position: relative;
+}
+
+.lang-dropdown__trigger {
   display: flex;
   align-items: center;
-  gap: 4px;
-}
-
-.lang-btn {
+  gap: 5px;
   background: none;
-  border: none;
+  border: 1.5px solid rgba(28, 43, 58, 0.15);
+  border-radius: 7px;
+  padding: 5px 9px;
+  cursor: pointer;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
   color: #1c2b3a;
-  cursor: pointer;
-  padding: 2px 4px;
-  border-radius: 4px;
-  opacity: 0.45;
-  transition: opacity 0.2s, color 0.2s;
+  letter-spacing: 0.3px;
+  transition: border-color 0.2s, background 0.2s;
+  white-space: nowrap;
 }
 
-.lang-btn.active {
-  opacity: 1;
-  color: #2e6da4;
+.lang-dropdown__trigger:hover {
+  border-color: #2e6da4;
+  background: rgba(46, 109, 164, 0.05);
 }
 
-.lang-btn:hover {
+.lang-dropdown__flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lang-dropdown__code {
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.lang-dropdown__chevron {
+  width: 8px;
+  height: 5px;
+  opacity: 0.5;
+  transition: transform 0.2s;
+}
+
+.lang-dropdown__chevron.open {
+  transform: rotate(180deg);
   opacity: 0.8;
 }
 
-.lang-sep {
-  font-size: 0.7rem;
-  color: #1c2b3a;
-  opacity: 0.25;
-  user-select: none;
+.lang-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 148px;
+  background: #fff;
+  border: 1px solid rgba(160, 174, 192, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(28, 43, 58, 0.12);
+  padding: 0.3rem;
+  z-index: 200;
+  animation: langMenuIn 0.15s ease;
 }
 
-.navbar.dark-hero .lang-btn {
-  color: rgba(255, 255, 255, 0.7);
+@keyframes langMenuIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.navbar.dark-hero .lang-btn.active {
-  color: #ffffff;
-  opacity: 1;
-}
-
-.navbar.dark-hero .lang-sep {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.mobile-lang-toggle {
+.lang-dropdown__item {
   display: flex;
   align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: none;
+  border: none;
+  border-radius: 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1c2b3a;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  text-align: left;
+}
+
+.lang-dropdown__item:hover {
+  background: rgba(46, 109, 164, 0.07);
+  color: #2e6da4;
+}
+
+.lang-dropdown__item.active {
+  background: rgba(46, 109, 164, 0.1);
+  color: #2e6da4;
+}
+
+.lang-dropdown__item-flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lang-dropdown__item-label {
+  font-size: 0.8rem;
+}
+
+/* dark-hero mode */
+.navbar.dark-hero .lang-dropdown__trigger {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar.dark-hero .lang-dropdown__trigger:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar.dark-hero .lang-dropdown__chevron {
+  stroke: rgba(255, 255, 255, 0.7);
+}
+
+/* Mobile lang grid */
+.mobile-lang-grid {
+  display: flex;
+  flex-wrap: wrap;
   gap: 6px;
-  padding: 0.6rem 0.5rem;
+  padding: 0.75rem 0.5rem;
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.mobile-lang-toggle .lang-btn {
-  font-size: 0.85rem;
-  padding: 4px 8px;
-  border-radius: 6px;
+.mobile-lang-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 10px;
+  background: none;
+  border: 1.5px solid rgba(28,43,58,0.12);
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #1c2b3a;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  min-width: 48px;
 }
 
-.mobile-lang-toggle .lang-btn.active {
+.mobile-lang-item span:first-child {
+  font-size: 1.1rem;
+}
+
+.mobile-lang-item:hover {
+  border-color: #2e6da4;
+  color: #2e6da4;
+}
+
+.mobile-lang-item.active {
   background: rgba(46,109,164,0.1);
+  border-color: #2e6da4;
+  color: #2e6da4;
 }
 
 /* ── Responsive ── */

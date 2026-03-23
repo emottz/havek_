@@ -12,7 +12,7 @@ const VISIBLE = 3;
 
 const Home = () => {
   const { lang, t } = useLanguage();
-  const pt = (p, field) => (lang === 'en' && p[`${field}_en`]) ? p[`${field}_en`] : p[field];
+  const pt = (p, field) => (lang !== 'tr' && p[`${field}_${lang}`]) ? p[`${field}_${lang}`] : p[field];
   const { products, loading } = useProducts();
   const [slideIndex, setSlideIndex] = useState(0);
   const { products: atolyeProds } = useProducts({ category: 'atolye' });

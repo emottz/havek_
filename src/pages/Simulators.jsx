@@ -10,7 +10,7 @@ import './AtolyeEgitimSetleri.css';
 const Simulators = () => {
   const { products, loading } = useProducts({ category: 'simulator' });
   const { lang, t } = useLanguage();
-  const pt = (p, field) => (lang === 'en' && p[`${field}_en`]) ? p[`${field}_en`] : p[field];
+  const pt = (p, field) => (lang !== 'tr' && p[`${field}_${lang}`]) ? p[`${field}_${lang}`] : p[field];
 
   return (
     <div className="placeholder-page">

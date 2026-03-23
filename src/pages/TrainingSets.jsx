@@ -10,7 +10,7 @@ import './AtolyeEgitimSetleri.css';
 const TrainingSets = () => {
   const { products, loading } = useProducts({ category: 'ata-chapter' });
   const { lang, t } = useLanguage();
-  const pt = (p, field) => (lang === 'en' && p[`${field}_en`]) ? p[`${field}_en`] : p[field];
+  const pt = (p, field) => (lang !== 'tr' && p[`${field}_${lang}`]) ? p[`${field}_${lang}`] : p[field];
 
   return (
     <div className="training-sets-page">

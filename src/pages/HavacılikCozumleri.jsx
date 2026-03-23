@@ -46,7 +46,7 @@ const FEATURED_IDS = [
 const HavacılikCozumleri = () => {
   const { products: allProducts, loading } = useProducts({});
   const { lang, t } = useLanguage();
-  const pt = (p, field) => (lang === 'en' && p[`${field}_en`]) ? p[`${field}_en`] : p[field];
+  const pt = (p, field) => (lang !== 'tr' && p[`${field}_${lang}`]) ? p[`${field}_${lang}`] : p[field];
 
   const SOLUTIONS = [
     {

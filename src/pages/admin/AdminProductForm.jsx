@@ -28,6 +28,9 @@ const CATEGORIES = [
 const EMPTY = {
   id: '', title: '', description: '',
   title_en: '', description_en: '',
+  title_fr: '', description_fr: '',
+  title_de: '', description_de: '',
+  title_ja: '', description_ja: '',
   images: [], folder: '', category: '',
   categories: [],
   display_order: 0, is_active: true,
@@ -299,14 +302,50 @@ const AdminProductForm = () => {
 
           {/* Başlık EN */}
           <div className="admin-field admin-field--full">
-            <label>Title (EN) <small style={{ fontWeight: 400, color: '#64748b' }}>— İngilizce PDF için</small></label>
+            <label>Title (EN) <small style={{ fontWeight: 400, color: '#64748b' }}>— İngilizce</small></label>
             <input value={form.title_en || ''} onChange={set('title_en')} placeholder="Product name in English" />
           </div>
 
           {/* Açıklama EN */}
           <div className="admin-field admin-field--full">
-            <label>Description (EN) <small style={{ fontWeight: 400, color: '#64748b' }}>— İngilizce PDF için</small></label>
+            <label>Description (EN) <small style={{ fontWeight: 400, color: '#64748b' }}>— İngilizce</small></label>
             <textarea value={form.description_en || ''} onChange={set('description_en')} rows={6} placeholder="Product description in English..." />
+          </div>
+
+          {/* Başlık FR */}
+          <div className="admin-field admin-field--full">
+            <label>Titre (FR) 🇫🇷 <small style={{ fontWeight: 400, color: '#64748b' }}>— Fransızca</small></label>
+            <input value={form.title_fr || ''} onChange={set('title_fr')} placeholder="Nom du produit en français" />
+          </div>
+
+          {/* Açıklama FR */}
+          <div className="admin-field admin-field--full">
+            <label>Description (FR) 🇫🇷 <small style={{ fontWeight: 400, color: '#64748b' }}>— Fransızca</small></label>
+            <textarea value={form.description_fr || ''} onChange={set('description_fr')} rows={6} placeholder="Description du produit en français..." />
+          </div>
+
+          {/* Başlık DE */}
+          <div className="admin-field admin-field--full">
+            <label>Titel (DE) 🇩🇪 <small style={{ fontWeight: 400, color: '#64748b' }}>— Almanca</small></label>
+            <input value={form.title_de || ''} onChange={set('title_de')} placeholder="Produktname auf Deutsch" />
+          </div>
+
+          {/* Açıklama DE */}
+          <div className="admin-field admin-field--full">
+            <label>Beschreibung (DE) 🇩🇪 <small style={{ fontWeight: 400, color: '#64748b' }}>— Almanca</small></label>
+            <textarea value={form.description_de || ''} onChange={set('description_de')} rows={6} placeholder="Produktbeschreibung auf Deutsch..." />
+          </div>
+
+          {/* Başlık JA */}
+          <div className="admin-field admin-field--full">
+            <label>タイトル (JA) 🇯🇵 <small style={{ fontWeight: 400, color: '#64748b' }}>— Japonca</small></label>
+            <input value={form.title_ja || ''} onChange={set('title_ja')} placeholder="製品名（日本語）" />
+          </div>
+
+          {/* Açıklama JA */}
+          <div className="admin-field admin-field--full">
+            <label>説明 (JA) 🇯🇵 <small style={{ fontWeight: 400, color: '#64748b' }}>— Japonca</small></label>
+            <textarea value={form.description_ja || ''} onChange={set('description_ja')} rows={6} placeholder="製品説明（日本語）..." />
           </div>
 
           {/* Görseller */}

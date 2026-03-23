@@ -1,14 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import './Navbar.css';
+
+const LANGS = [
+  { code: 'tr', label: 'Türkçe',  flag: '🇹🇷' },
+  { code: 'en', label: 'English', flag: '🇬🇧' },
+  { code: 'fr', label: 'Français', flag: '🇫🇷' },
+  { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
+  { code: 'ja', label: '日本語',   flag: '🇯🇵' },
+];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const location = useLocation();
   const { lang, setLang, t } = useLanguage();
+  const langRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -21,12 +31,21 @@ const Navbar = () => {
     setDropdownOpen(false);
   }, [location]);
 
+  useEffect(() => {
+    const handler = (e) => {
+      if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
   const isEgitimActive =
     location.pathname.startsWith('/egitim-setleri') ||
     location.pathname === '/atolye-egitim-setleri' ||
     location.pathname === '/ata-chapter-egitim-setleri';
 
   const isDarkHero = location.pathname === '/havacilik-cozumleri';
+  const currentLang = LANGS.find(l => l.code === lang) || LANGS[0];
 
   return (
     <>
@@ -84,17 +103,35 @@ const Navbar = () => {
           </nav>
 
           <div className="navbar-right">
-            <div className="lang-toggle">
+            {/* Language Dropdown */}
+            <div className="lang-dropdown" ref={langRef}>
               <button
-                className={`lang-btn ${lang === 'tr' ? 'active' : ''}`}
-                onClick={() => setLang('tr')}
-              >TR</button>
-              <span className="lang-sep">|</span>
-              <button
-                className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
-                onClick={() => setLang('en')}
-              >EN</button>
+                className="lang-dropdown__trigger"
+                onClick={() => setLangOpen(o => !o)}
+                aria-label="Dil seç"
+              >
+                <span className="lang-dropdown__flag">{currentLang.flag}</span>
+                <span className="lang-dropdown__code">{currentLang.code.toUpperCase()}</span>
+                <svg className={`lang-dropdown__chevron ${langOpen ? 'open' : ''}`} viewBox="0 0 10 6" fill="none">
+                  <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              {langOpen && (
+                <div className="lang-dropdown__menu">
+                  {LANGS.map(l => (
+                    <button
+                      key={l.code}
+                      className={`lang-dropdown__item ${lang === l.code ? 'active' : ''}`}
+                      onClick={() => { setLang(l.code); setLangOpen(false); }}
+                    >
+                      <span className="lang-dropdown__item-flag">{l.flag}</span>
+                      <span className="lang-dropdown__item-label">{l.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
+
             <Link to="/iletisim" className="btn-contact">{t('nav.contact')}</Link>
             <button
               className={`hamburger ${mobileOpen ? 'open' : ''}`}
@@ -118,10 +155,17 @@ const Navbar = () => {
           </div>
           <Link to="/havacilik-cozumleri" className="mobile-link">{t('nav.solutions')}</Link>
           <Link to="/online-katalog" className="mobile-link">{t('nav.catalog')}</Link>
-          <div className="mobile-lang-toggle">
-            <button className={`lang-btn ${lang === 'tr' ? 'active' : ''}`} onClick={() => setLang('tr')}>TR</button>
-            <span className="lang-sep">|</span>
-            <button className={`lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
+          <div className="mobile-lang-grid">
+            {LANGS.map(l => (
+              <button
+                key={l.code}
+                className={`mobile-lang-item ${lang === l.code ? 'active' : ''}`}
+                onClick={() => setLang(l.code)}
+              >
+                <span>{l.flag}</span>
+                <span>{l.code.toUpperCase()}</span>
+              </button>
+            ))}
           </div>
           <Link to="/iletisim" className="mobile-cta">{t('nav.contact')}</Link>
         </nav>

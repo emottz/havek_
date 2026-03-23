@@ -3,7 +3,7 @@ import {
   Document, Page, Text, View, StyleSheet, Image, Font,
 } from '@react-pdf/renderer';
 import { parseProductHTML } from '../lib/parseProductHTML';
-import { SECTION_TR_TO_EN, CATEGORY_EN, UI_TEXT } from '../lib/pdfTranslations';
+import { SECTION_TRANSLATIONS, CATEGORY_LABELS, UI_TEXT } from '../lib/pdfTranslations';
 
 const BASE = window.location.origin;
 Font.register({
@@ -150,13 +150,11 @@ const styles = StyleSheet.create({
   footerText:  { fontSize: 6.5, color: C.muted },
 });
 
+const LOCALE_MAP = { tr: 'tr-TR', en: 'en-GB', fr: 'fr-FR', de: 'de-DE', ja: 'ja-JP' };
+
 function formatDate(lang) {
-  if (lang === 'en') {
-    return new Date().toLocaleDateString('en-GB', {
-      day: '2-digit', month: 'long', year: 'numeric',
-    });
-  }
-  return new Date().toLocaleDateString('tr-TR', {
+  const locale = LOCALE_MAP[lang] || 'en-GB';
+  return new Date().toLocaleDateString(locale, {
     day: '2-digit', month: 'long', year: 'numeric',
   });
 }
@@ -176,31 +174,25 @@ function fixImageUrl(src) {
 }
 
 function translateTitle(title, lang) {
-  if (lang !== 'en') return title;
-  return SECTION_TR_TO_EN[title] || title;
+  if (lang === 'tr') return title;
+  return SECTION_TRANSLATIONS[lang]?.[title] || SECTION_TRANSLATIONS.en[title] || title;
 }
 
 function categoryLabelForLang(cat, lang) {
-  if (lang === 'en') return CATEGORY_EN[cat] || cat;
-  const trMap = {
-    'atolye': 'Atölye Eğitim Seti',
-    'ata-chapter': 'ATA Chapter Bazlı',
-    'simulator': 'Simülatör',
-  };
-  return trMap[cat] || cat;
+  return (CATEGORY_LABELS[lang] || CATEGORY_LABELS.tr)[cat] || cat;
 }
 
 /* ── Tek ürün sayfası — Document olmadan (katalog için dışa aktarılır) ── */
 export const ProductSheetPage = ({ product, lang = 'tr', resolvedImages, email, logoDataUrl }) => {
   const t = UI_TEXT[lang];
 
-  const title = lang === 'en'
-    ? (product.title_en || product.title)
-    : product.title;
+  const title = (lang !== 'tr' && product[`title_${lang}`])
+    ? product[`title_${lang}`]
+    : (product.title_en && lang !== 'tr' ? product.title_en : product.title);
 
-  const rawDescription = lang === 'en'
-    ? (product.description_en || product.description)
-    : product.description;
+  const rawDescription = (lang !== 'tr' && product[`description_${lang}`])
+    ? product[`description_${lang}`]
+    : (product.description_en && lang !== 'tr' ? product.description_en : product.description);
 
   const { intro, sections } = parseProductHTML(rawDescription);
 
@@ -332,7 +324,7 @@ export const ProductSheetPage = ({ product, lang = 'tr', resolvedImages, email, 
 /* ── Tek ürün teknik dökümanı (standalone) ── */
 export const TechnicalSheet = ({ product, lang = 'tr', resolvedImages, email, logoDataUrl }) => {
   const t = UI_TEXT[lang];
-  const title = lang === 'en' ? (product.title_en || product.title) : product.title;
+  const title = (lang !== 'tr' && product[`title_${lang}`]) ? product[`title_${lang}`] : (lang !== 'tr' && product.title_en ? product.title_en : product.title);
   return (
     <Document title={`${title} - ${t.docType}`} author="HAVEK Aviation Training Equipment">
       <ProductSheetPage product={product} lang={lang} resolvedImages={resolvedImages} email={email} logoDataUrl={logoDataUrl} />
