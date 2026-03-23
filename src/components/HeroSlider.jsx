@@ -31,6 +31,7 @@ export default function HeroSlider() {
       title: t('hero.slide1.title'),
       desc: t('hero.slide1.desc'),
       img: '/01.png',
+      mobileImg: '/20.png',
       cta: t('hero.slide1.cta'),
       href: '/egitim-setleri',
     },
@@ -40,6 +41,7 @@ export default function HeroSlider() {
       title: t('hero.slide2.title'),
       desc: t('hero.slide2.desc'),
       img: '/02.png',
+      mobileImg: '/21.png',
       cta: t('hero.slide2.cta'),
       href: '/simulatorler',
     },
@@ -49,6 +51,7 @@ export default function HeroSlider() {
       title: t('hero.slide3.title'),
       desc: t('hero.slide3.desc'),
       img: '/03.png',
+      mobileImg: '/22.png',
       cta: t('hero.slide3.cta'),
       href: '/ata-chapter-egitim-setleri',
     },
@@ -94,12 +97,10 @@ export default function HeroSlider() {
     >
       {SLIDES.map((s, i) => (
         <div key={s.id} className={`hs__bg${i === index ? ' hs__bg--active' : ''}`}>
-          <img
-            src={s.img}
-            alt=""
-            aria-hidden="true"
-            className="hs__bg-img"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={s.mobileImg} />
+            <img src={s.img} alt="" aria-hidden="true" className="hs__bg-img" />
+          </picture>
         </div>
       ))}
 
