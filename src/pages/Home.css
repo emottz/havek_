@@ -499,29 +499,50 @@
     padding: 1rem 0;
   }
 
-  /* Carousel slide: kısmi görünüm için %85 genişlik */
+  /* Carousel: 2 kart görünsün */
   .product-embla__slide {
-    flex: 0 0 85%;
-    padding: 0.5rem 0.5rem 0.5rem 0;
+    flex: 0 0 50%;
+    padding: 0.25rem 0.35rem 0.25rem 0;
   }
 
   .product-embla {
-    padding: 1rem 0;
-    margin: -1rem 0;
+    padding: 0.75rem 0;
+    margin: -0.75rem 0;
   }
 
-  /* Carousel kartlarında image daha kısa */
+  /* Küçük kart stili */
   .product-embla__slide .atolye-card__image-wrap {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 3;
+    height: 130px;
   }
 
   .product-embla__slide .atolye-card__body {
-    padding: 1rem;
+    padding: 0.65rem;
+  }
+
+  .product-embla__slide .atolye-card__badge {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .product-embla__slide .atolye-card__title {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    margin-bottom: 0.4rem;
   }
 
   .product-embla__slide .atolye-card__desc {
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    display: none;
+  }
+
+  .product-embla__slide .atolye-card__footer {
+    padding-top: 0.5rem;
+  }
+
+  .product-embla__slide .atolye-card__cta {
+    font-size: 0.65rem;
   }
 }
 
