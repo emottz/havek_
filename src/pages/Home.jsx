@@ -1,6 +1,4 @@
-import React, { useCallback } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
 import './Home.css';
 import './AtolyeEgitimSetleri.css';
 import HeroSlider from '../components/HeroSlider';
@@ -17,20 +15,6 @@ const Home = () => {
   const { products: atolyeProds } = useProducts({ category: 'atolye' });
   const { products: ataProds }    = useProducts({ category: 'ata-chapter' });
   const { products: simProds }    = useProducts({ category: 'simulator' });
-
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
-    align: 'start',
-    containScroll: 'trimSnaps'
-  });
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
 
   const featuredProducts = products
     .filter(p => p.images && p.images.length > 0)
@@ -122,60 +106,41 @@ const Home = () => {
         />
       </section>
 
-      <section className="popular-products container">
+      <section className="featured-section container">
         <div className="section-header">
           <h2 className="section-title">{t('home.featuredTitle')}</h2>
           <div className="title-underline"></div>
         </div>
-
-        <div className="product-carousel-wrapper">
-          <button className="product-carousel-btn prev" onClick={scrollPrev}>
-            <ChevronLeft size={24} />
-          </button>
-
-          <div className="product-embla" ref={emblaRef}>
-            <div className="product-embla__container">
-              {loading ? (
-                Array.from({ length: 4 }).map((_, i) => (
-                  <div key={i} className="product-embla__slide">
-                    <SkeletonCard />
-                  </div>
-                ))
-              ) : featuredProducts.map((product) => (
-                <div key={product.id} className="product-embla__slide">
-                  <Link to={`/egitim-seti/${product.id}`} className="atolye-card-link">
-                    <article className="atolye-card">
-                      <div className="atolye-card__image-wrap">
-                        <img src={product.images[0]} alt={product.title} className="atolye-card__image" />
-                        <div className="atolye-card__image-overlay" />
+        <div className="featured-grid">
+          {loading
+            ? Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
+            : featuredProducts.slice(0, 6).map((product) => (
+                <Link key={product.id} to={`/egitim-seti/${product.id}`} className="atolye-card-link">
+                  <article className="atolye-card">
+                    <div className="atolye-card__image-wrap">
+                      <img src={product.images[0]} alt={pt(product, 'title')} className="atolye-card__image" />
+                      <div className="atolye-card__image-overlay" />
+                    </div>
+                    <div className="atolye-card__body">
+                      <span className="atolye-card__badge">{t('home.badge.trainingSet')}</span>
+                      <h3 className="atolye-card__title">{pt(product, 'title')}</h3>
+                      <p className="atolye-card__desc">
+                        {pt(product, 'description')
+                          ? pt(product, 'description').replace(/<[^>]+>/g, '').substring(0, 100) + '...'
+                          : t('common.noDesc')}
+                      </p>
+                      <div className="atolye-card__footer">
+                        <span className="atolye-card__cta">
+                          {t('common.viewDetails')}
+                          <svg viewBox="0 0 16 16" fill="none" className="atolye-card__arrow">
+                            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </span>
                       </div>
-                      <div className="atolye-card__body">
-                        <span className="atolye-card__badge">{t('home.badge.trainingSet')}</span>
-                        <h3 className="atolye-card__title">{pt(product, 'title')}</h3>
-                        <p className="atolye-card__desc">
-                          {pt(product, 'description')
-                            ? pt(product, 'description').replace(/<[^>]+>/g, '').substring(0, 100) + '...'
-                            : t('common.noDesc')}
-                        </p>
-                        <div className="atolye-card__footer">
-                          <span className="atolye-card__cta">
-                            {t('common.viewDetails')}
-                            <svg viewBox="0 0 16 16" fill="none" className="atolye-card__arrow">
-                              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-                    </article>
-                  </Link>
-                </div>
+                    </div>
+                  </article>
+                </Link>
               ))}
-            </div>
-          </div>
-
-          <button className="product-carousel-btn next" onClick={scrollNext}>
-            <ChevronRight size={24} />
-          </button>
         </div>
       </section>
 
