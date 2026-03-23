@@ -704,3 +704,54 @@
     flex-direction: column;
   }
 }
+
+/* ── Translate All Progress ── */
+.admin-btn-translate {
+  background: linear-gradient(135deg, #1c2b3a, #2e6da4) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  font-size: 0.85rem !important;
+}
+
+.admin-btn-translate:disabled {
+  opacity: 0.7 !important;
+  cursor: wait !important;
+}
+
+.translate-progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.translate-progress__step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 24px;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background: #e2e8f0;
+  color: #94a3b8;
+  transition: background 0.2s, color 0.2s;
+}
+
+.translate-progress__step.active {
+  background: #2e6da4;
+  color: #fff;
+  animation: tpulse 0.8s ease-in-out infinite alternate;
+}
+
+.translate-progress__step.done {
+  background: #22c55e;
+  color: #fff;
+}
+
+@keyframes tpulse {
+  from { opacity: 0.7; }
+  to   { opacity: 1; }
+}

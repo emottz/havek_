@@ -3,14 +3,17 @@ import { useNavigate, useParams, Link } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
 import { useImageUpload } from '../../hooks/useImageUpload'
 import { parseProductHTML } from '../../lib/parseProductHTML'
-import { SECTION_TR_TO_EN } from '../../lib/pdfTranslations'
+import { SECTION_TRANSLATIONS } from '../../lib/pdfTranslations'
 import './Admin.css'
 
-async function translateText(text) {
+const LANG_LABELS = { en: 'İngilizce', fr: 'Fransızca', de: 'Almanca', ja: 'Japonca' }
+const TARGET_LANGS = ['en', 'fr', 'de', 'ja']
+
+async function translateText(text, targetLang = 'en') {
   if (!text?.trim()) return '';
   try {
     const res = await fetch(
-      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=tr|en`
+      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text.slice(0, 500))}&langpair=tr|${targetLang}`
     );
     const data = await res.json();
     return data.responseData?.translatedText || text;
@@ -18,6 +21,8 @@ async function translateText(text) {
     return text;
   }
 }
+
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 const CATEGORIES = [
   { value: 'ata-chapter', label: 'ATA Chapter Bazlı' },
@@ -45,7 +50,7 @@ const AdminProductForm = () => {
   const [form, setForm] = useState(EMPTY)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
-  const [translating, setTranslating] = useState(false)
+  const [translating, setTranslating] = useState('')  // '' | 'en' | 'fr' | 'de' | 'ja'
   const [formatting, setFormatting] = useState(false)
   const { upload, remove, uploading, uploadError, setUploadError } = useImageUpload()
 
@@ -115,32 +120,42 @@ const AdminProductForm = () => {
     setFormatting(false)
   }
 
-  const handleAutoTranslate = async () => {
-    if (!form.description && !form.title) return
-    setTranslating(true)
+  const translateToLang = async (lang, { intro, sections }) => {
+    const titleTr = form.title
+    const translatedTitle = await translateText(titleTr, lang)
+
+    let descHtml = ''
+    if (intro) {
+      const translatedIntro = await translateText(intro, lang)
+      descHtml += `<p>${translatedIntro}</p>`
+    }
+    for (const sec of sections) {
+      const secTitle = SECTION_TRANSLATIONS[lang]?.[sec.title] || await translateText(sec.title, lang)
+      const items = []
+      for (const item of sec.items) {
+        items.push(await translateText(item, lang))
+        await sleep(120) // rate limit koruması
+      }
+      descHtml += `<h4>${secTitle}</h4><ul>${items.map(i => `<li>${i}</li>`).join('')}</ul>`
+    }
+    return { title: translatedTitle, desc: descHtml }
+  }
+
+  const handleAutoTranslateAll = async () => {
+    if (!form.title) return
+    const parsed = parseProductHTML(form.description)
+    const updates = {}
     try {
-      const titleEn = await translateText(form.title)
-
-      const { intro, sections } = parseProductHTML(form.description)
-      let descEn = ''
-
-      if (intro) {
-        const introEn = await translateText(intro)
-        descEn += `<p>${introEn}</p>`
+      for (const lang of TARGET_LANGS) {
+        setTranslating(lang)
+        const result = await translateToLang(lang, parsed)
+        updates[`title_${lang}`] = result.title
+        updates[`description_${lang}`] = result.desc
+        await sleep(300)
       }
-
-      for (const sec of sections) {
-        const secTitleEn = SECTION_TR_TO_EN[sec.title] || await translateText(sec.title)
-        const itemsEn = []
-        for (const item of sec.items) {
-          itemsEn.push(await translateText(item))
-        }
-        descEn += `<h4>${secTitleEn}</h4><ul>${itemsEn.map(i => `<li>${i}</li>`).join('')}</ul>`
-      }
-
-      setForm(f => ({ ...f, title_en: titleEn, description_en: descEn }))
+      setForm(f => ({ ...f, ...updates }))
     } finally {
-      setTranslating(false)
+      setTranslating('')
     }
   }
 
@@ -284,19 +299,30 @@ const AdminProductForm = () => {
             </small>
           </div>
 
-          {/* Auto-translate button */}
+          {/* Auto-translate all languages button */}
           <div className="admin-field admin-field--full" style={{ paddingTop: 4 }}>
             <button
               type="button"
-              className="admin-btn-outline"
-              onClick={handleAutoTranslate}
-              disabled={translating || !form.title}
+              className="admin-btn-outline admin-btn-translate"
+              onClick={handleAutoTranslateAll}
+              disabled={!!translating || !form.title}
               style={{ width: 'fit-content' }}
             >
-              {translating ? '⏳ Çevriliyor...' : '🌐 Türkçe\'den İngilizce\'ye Otomatik Çevir'}
+              {translating
+                ? `⏳ ${LANG_LABELS[translating]} çevriliyor...`
+                : '🌐 Tüm Dillere Otomatik Çevir (EN · FR · DE · JA)'}
             </button>
+            {translating && (
+              <div className="translate-progress">
+                {TARGET_LANGS.map(l => (
+                  <span key={l} className={`translate-progress__step ${translating === l ? 'active' : TARGET_LANGS.indexOf(l) < TARGET_LANGS.indexOf(translating) ? 'done' : ''}`}>
+                    {l.toUpperCase()}
+                  </span>
+                ))}
+              </div>
+            )}
             <small style={{ color: '#64748b', marginTop: 4, display: 'block' }}>
-              MyMemory API kullanır. Sonuçları kontrol edip düzenleyebilirsiniz.
+              MyMemory API kullanır (ücretsiz). Türkçe içeriği 4 dile çevirir. Sonuçları kontrol edip düzenleyebilirsiniz.
             </small>
           </div>
 
