@@ -252,8 +252,8 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.06);
+  border: 1.5px solid #2c3e50;
+  background: #1c2b3a;
   color: #fff;
   display: flex;
   align-items: center;
@@ -264,12 +264,12 @@
 }
 
 .featured-carousel__arrow:hover:not(:disabled) {
-  background: rgba(255,255,255,0.15);
-  border-color: rgba(255,255,255,0.4);
+  background: #2e6da4;
+  border-color: #2e6da4;
 }
 
 .featured-carousel__arrow:disabled {
-  opacity: 0.25;
+  opacity: 0.3;
   cursor: default;
 }
 
