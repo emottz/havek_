@@ -41,7 +41,7 @@
 
 .atolye-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -238,11 +238,33 @@
     font-size: 1.6rem;
   }
 
+  .atolye-grid {
+    gap: 1.25rem;
+  }
+
+  .atolye-card__body {
+    padding: 1rem;
+  }
+
   .atolye-page .cta-section h2 {
     font-size: 1.5rem;
   }
 
   .atolye-page .cta-section .cta-content {
     padding: 2rem 1.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .atolye-hero {
+    padding: 80px 0 25px;
+  }
+
+  .atolye-hero__title {
+    font-size: 1.4rem;
+  }
+
+  .atolye-grid {
+    gap: 1rem;
   }
 }

@@ -19,6 +19,12 @@
   padding: 6rem 0;
 }
 
+@media (max-width: 768px) {
+  .catalog-grid-section {
+    padding: 3rem 0;
+  }
+}
+
 .section-intro {
   color: var(--text-muted);
   max-width: 600px;
@@ -28,7 +34,7 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -171,11 +177,30 @@
     font-size: 0.95rem;
   }
 
+  .products-grid {
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+
   .cta-section .cta-content {
     padding: 2rem 1.25rem;
   }
 
   .cta-section h2 {
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-section {
+    padding: 70px 0.875rem 1.5rem;
+  }
+
+  .products-grid {
+    gap: 1rem;
   }
 }

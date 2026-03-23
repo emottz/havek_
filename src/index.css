@@ -140,3 +140,9 @@ button {
     font-size: 1.5rem !important;
   }
 }
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 0.625rem;
+  }
+}
