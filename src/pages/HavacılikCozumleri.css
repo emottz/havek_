@@ -365,4 +365,21 @@
   .cozumler-featured-grid {
     grid-template-columns: 1fr;
   }
+
+  .cozumler-stats .container {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .cozumler-cta h2 {
+    font-size: 1.5rem;
+  }
+
+  .cozumler-cta {
+    padding: 3rem 0;
+  }
+
+  .cozumler-hero {
+    padding: 90px 0 2.5rem;
+  }
 }

@@ -157,3 +157,25 @@
     padding: 3rem 1.5rem;
   }
 }
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 80px 1rem 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .section-intro {
+    font-size: 0.95rem;
+  }
+
+  .cta-section .cta-content {
+    padding: 2rem 1.25rem;
+  }
+
+  .cta-section h2 {
+    font-size: 1.5rem;
+  }
+}

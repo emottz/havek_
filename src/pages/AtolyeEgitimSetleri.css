@@ -228,3 +228,21 @@
     padding: 110px 0 40px;
   }
 }
+
+@media (max-width: 480px) {
+  .atolye-hero {
+    padding: 90px 0 30px;
+  }
+
+  .atolye-hero__title {
+    font-size: 1.6rem;
+  }
+
+  .atolye-page .cta-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .atolye-page .cta-section .cta-content {
+    padding: 2rem 1.25rem;
+  }
+}

@@ -467,8 +467,16 @@
 }
 
 @media (max-width: 480px) {
+  .home-page > * + * {
+    margin-top: 1.75rem;
+  }
+
   .cat-section {
     padding: 0 0.75rem;
+  }
+
+  .cat-section__title {
+    font-size: 1.5rem;
   }
 
   .cta-content {
@@ -481,5 +489,9 @@
 
   .section-header {
     margin-bottom: 1.5rem;
+  }
+
+  .popular-products {
+    padding: 1rem 0;
   }
 }

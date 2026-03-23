@@ -288,3 +288,37 @@
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  .hs {
+    height: min(65vh, 480px);
+  }
+
+  .hs__content {
+    padding: 0 1rem 80px;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .hs__text {
+    max-width: 100%;
+  }
+
+  .hs__title {
+    font-size: clamp(1.35rem, 7vw, 1.75rem);
+  }
+
+  .hs__desc {
+    font-size: 0.82rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .hs__nav {
+    padding: 0 1rem 1rem;
+  }
+
+  .hs__cta {
+    font-size: 0.78rem;
+    padding: 0.65rem 1.25rem;
+  }
+}
