@@ -365,4 +365,50 @@
   .cozumler-featured-grid {
     grid-template-columns: 1fr;
   }
+
+  .cozumler-stats .container {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .cozumler-sol-card {
+    padding: 1.25rem;
+  }
+
+  .cozumler-cta h2 {
+    font-size: 1.5rem;
+  }
+
+  .cozumler-cta {
+    padding: 3rem 0;
+  }
+
+  .cozumler-hero {
+    padding: 90px 0 2.5rem;
+  }
+
+  .cozumler-solutions {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .cozumler-why {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .cozumler-featured {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .cozumler-hero {
+    padding: 80px 0 2rem;
+  }
+
+  .cozumler-cta h2 {
+    font-size: 1.35rem;
+  }
 }

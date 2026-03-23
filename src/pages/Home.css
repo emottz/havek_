@@ -235,7 +235,7 @@
 .product-embla__slide {
   flex: 0 0 100%;
   min-width: 0;
-  padding: 0.5rem 0.75rem 0.5rem 0;
+  padding: 0.5rem 0.5rem 0.5rem 0;
 }
 
 @media (min-width: 640px) {
@@ -469,15 +469,22 @@
   }
 }
 
-@media (max-width: 640px) {
-  .product-embla__slide .atolye-card__image-wrap {
-    aspect-ratio: 16/9;
-  }
-}
 
 @media (max-width: 480px) {
+  .home-page > * + * {
+    margin-top: 1.75rem;
+  }
+
   .cat-section {
     padding: 0 0.75rem;
+  }
+
+  .cat-section__title {
+    font-size: 1.5rem;
+  }
+
+  .cat-card__content {
+    padding: 1.25rem;
   }
 
   .cta-content {
@@ -490,5 +497,87 @@
 
   .section-header {
     margin-bottom: 1.5rem;
+  }
+
+  .popular-products {
+    padding: 1rem 0;
+  }
+
+  /* Tek kart — tam embla genişliği */
+  .product-embla__slide {
+    flex: 0 0 100%;
+    padding: 0.25rem 0;
+  }
+
+  .product-embla {
+    padding: 0.5rem 0;
+    margin: -0.5rem 0;
+  }
+
+  /* Kart boyutu sıkıştırılmış */
+  .product-embla__slide .atolye-card {
+    max-height: 220px;
+  }
+
+  .product-embla__slide .atolye-card__image-wrap {
+    height: 120px;
+    min-height: unset;
+    aspect-ratio: unset;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .product-embla__slide .atolye-card__image {
+    object-fit: cover;
+    padding: 0;
+  }
+
+  .product-embla__slide .atolye-card__body {
+    padding: 0.6rem 0.75rem;
+    gap: 0.25rem;
+  }
+
+  .product-embla__slide .atolye-card__badge {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .product-embla__slide .atolye-card__title {
+    font-size: 0.82rem;
+    margin-bottom: 0;
+    height: auto;
+    -webkit-line-clamp: 2;
+  }
+
+  .product-embla__slide .atolye-card__desc {
+    display: none;
+  }
+
+  .product-embla__slide .atolye-card__footer {
+    padding-top: 0.4rem;
+    margin-top: auto;
+  }
+
+  .product-embla__slide .atolye-card__cta {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .cat-card {
+    height: 200px;
+  }
+
+  .cat-card__content {
+    padding: 1rem;
+  }
+
+  .cat-card__title {
+    font-size: 1.1rem;
+  }
+
+  .section-title {
+    font-size: 1.35rem !important;
   }
 }
