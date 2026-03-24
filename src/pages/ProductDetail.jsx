@@ -172,6 +172,36 @@ const ProductDetail = () => {
                 <FileDown size={16} />
                 {pdfLoading === 'en' ? t('pd.preparing') : t('pd.pdfEN')}
               </button>
+              {product.title_fr && (
+                <button
+                  className="btn-secondary btn-pdf"
+                  onClick={() => handleDownloadPdf('fr')}
+                  disabled={!!pdfLoading}
+                >
+                  <FileDown size={16} />
+                  {pdfLoading === 'fr' ? t('pd.preparing') : t('pd.pdfFR')}
+                </button>
+              )}
+              {product.title_de && (
+                <button
+                  className="btn-secondary btn-pdf"
+                  onClick={() => handleDownloadPdf('de')}
+                  disabled={!!pdfLoading}
+                >
+                  <FileDown size={16} />
+                  {pdfLoading === 'de' ? t('pd.preparing') : t('pd.pdfDE')}
+                </button>
+              )}
+              {product.title_ja && (
+                <button
+                  className="btn-secondary btn-pdf"
+                  onClick={() => handleDownloadPdf('ja')}
+                  disabled={!!pdfLoading}
+                >
+                  <FileDown size={16} />
+                  {pdfLoading === 'ja' ? t('pd.preparing') : t('pd.pdfJA')}
+                </button>
+              )}
             </div>
           </div>
         </div>
