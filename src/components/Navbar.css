@@ -83,6 +83,14 @@
 }
 
 /* ── Dark hero mode — sadece /havacilik-cozumleri ── */
+.navbar.dark-hero {
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
 .navbar.dark-hero .logo-img {
   filter: brightness(0) invert(1);
 }

@@ -81,7 +81,7 @@ export const translations = {
     'cozum.cta.btn': 'Teklif & Bilgi Alın',
     'cozum.stat.products': 'Eğitim Seti & Ürün',
     'cozum.stat.categories': 'Çözüm Kategorisi',
-    'cozum.stat.cert': 'Sertifika Uyumluluğu',
+    'cozum.stat.cert': '%100 Uyumlu',
     'cozum.stat.custom': 'Özelleştirilebilir',
     'cozum.sol.atolye.label': 'Atölye Eğitim Setleri',
     'cozum.sol.atolye.desc': 'Emniyet teli, contalama, borulama, EWIS ve daha fazlası — teknisyen adaylarına temel bakım becerilerini gerçek komponentlerle kazandıran atölye setleri.',
