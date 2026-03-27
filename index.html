@@ -2,7 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" id="favicon" href="/instalogo-siyah.png" />
+    <script>
+      (function() {
+        function updateFavicon(dark) {
+          var el = document.getElementById('favicon');
+          if (el) el.href = dark ? '/instalogo-beyaz.png' : '/instalogo-siyah.png';
+        }
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        updateFavicon(mq.matches);
+        mq.addEventListener('change', function(e) { updateFavicon(e.matches); });
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HAVEK | Havacılık Eğitim Ekipmanları</title>
     <script>
