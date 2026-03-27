@@ -13,10 +13,12 @@ async function translateText(text, targetLang = 'en') {
   if (!text?.trim()) return '';
   try {
     const res = await fetch(
-      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text.slice(0, 500))}&langpair=tr|${targetLang}`
+      `https://translate.googleapis.com/translate_a/single?client=gtx&sl=tr&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`
     );
     const data = await res.json();
-    return data.responseData?.translatedText || text;
+    // Response: [[[translated, original, ...]]], join chunks
+    const translated = data[0]?.map(chunk => chunk[0]).join('') || text;
+    return translated;
   } catch {
     return text;
   }
