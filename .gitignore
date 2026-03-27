@@ -19,6 +19,8 @@ tmp_catalog/
 !public/20.png
 !public/21.png
 !public/22.png
+!public/instalogo-beyaz.png
+!public/instalogo-siyah.png
 set01.png
 slide01.png
 slide02.png
@@ -45,3 +47,6 @@ sync_products.js
 test_*.js
 nulgit
 upload_images.mjs
+
+# Instagram posts (private, not pushed to GitHub)
+instagram-posts/
