@@ -30,8 +30,10 @@ export default function HeroSlider() {
       eyebrow: t('hero.slide1.eyebrow'),
       title: t('hero.slide1.title'),
       desc: t('hero.slide1.desc'),
-      img: '/01.png',
-      mobileImg: '/20.png',
+      img: '/01.webp',
+      imgFallback: '/01.png',
+      mobileImg: '/20.webp',
+      mobileImgFallback: '/20.png',
       cta: t('hero.slide1.cta'),
       href: '/egitim-setleri',
     },
@@ -40,8 +42,10 @@ export default function HeroSlider() {
       eyebrow: t('hero.slide2.eyebrow'),
       title: t('hero.slide2.title'),
       desc: t('hero.slide2.desc'),
-      img: '/02.png',
-      mobileImg: '/21.png',
+      img: '/02.webp',
+      imgFallback: '/02.png',
+      mobileImg: '/21.webp',
+      mobileImgFallback: '/21.png',
       cta: t('hero.slide2.cta'),
       href: '/simulatorler',
     },
@@ -50,8 +54,10 @@ export default function HeroSlider() {
       eyebrow: t('hero.slide3.eyebrow'),
       title: t('hero.slide3.title'),
       desc: t('hero.slide3.desc'),
-      img: '/03.png',
-      mobileImg: '/22.png',
+      img: '/03.webp',
+      imgFallback: '/03.png',
+      mobileImg: '/22.webp',
+      mobileImgFallback: '/22.png',
       cta: t('hero.slide3.cta'),
       href: '/ata-chapter-egitim-setleri',
     },
@@ -98,8 +104,10 @@ export default function HeroSlider() {
       {SLIDES.map((s, i) => (
         <div key={s.id} className={`hs__bg${i === index ? ' hs__bg--active' : ''}`}>
           <picture>
-            <source media="(max-width: 768px)" srcSet={s.mobileImg} />
-            <img src={s.img} alt="" aria-hidden="true" className="hs__bg-img" />
+            <source media="(max-width: 768px)" srcSet={s.mobileImg} type="image/webp" />
+            <source media="(max-width: 768px)" srcSet={s.mobileImgFallback} />
+            <source srcSet={s.img} type="image/webp" />
+            <img src={s.imgFallback} alt="" aria-hidden="true" className="hs__bg-img" />
           </picture>
         </div>
       ))}
