@@ -192,16 +192,6 @@ const ProductDetail = () => {
                   {pdfLoading === 'de' ? t('pd.preparing') : t('pd.pdfDE')}
                 </button>
               )}
-              {product.title_ja && (
-                <button
-                  className="btn-secondary btn-pdf"
-                  onClick={() => handleDownloadPdf('ja')}
-                  disabled={!!pdfLoading}
-                >
-                  <FileDown size={16} />
-                  {pdfLoading === 'ja' ? t('pd.preparing') : t('pd.pdfJA')}
-                </button>
-              )}
             </div>
           </div>
         </div>

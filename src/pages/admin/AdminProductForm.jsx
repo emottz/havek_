@@ -6,8 +6,8 @@ import { parseProductHTML } from '../../lib/parseProductHTML'
 import { SECTION_TRANSLATIONS } from '../../lib/pdfTranslations'
 import './Admin.css'
 
-const LANG_LABELS = { en: 'İngilizce', fr: 'Fransızca', de: 'Almanca', ja: 'Japonca' }
-const TARGET_LANGS = ['en', 'fr', 'de', 'ja']
+const LANG_LABELS = { en: 'İngilizce', fr: 'Fransızca', de: 'Almanca' }
+const TARGET_LANGS = ['en', 'fr', 'de']
 
 async function translateText(text, targetLang = 'en') {
   if (!text?.trim()) return '';
@@ -37,7 +37,6 @@ const EMPTY = {
   title_en: '', description_en: '',
   title_fr: '', description_fr: '',
   title_de: '', description_de: '',
-  title_ja: '', description_ja: '',
   images: [], folder: '', category: '',
   categories: [],
   display_order: 0, is_active: true,
@@ -52,7 +51,7 @@ const AdminProductForm = () => {
   const [form, setForm] = useState(EMPTY)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
-  const [translating, setTranslating] = useState('')  // '' | 'en' | 'fr' | 'de' | 'ja'
+  const [translating, setTranslating] = useState('')  // '' | 'en' | 'fr' | 'de'
   const [formatting, setFormatting] = useState(false)
   const { upload, remove, uploading, uploadError, setUploadError } = useImageUpload()
 
@@ -312,7 +311,7 @@ const AdminProductForm = () => {
             >
               {translating
                 ? `⏳ ${LANG_LABELS[translating]} çevriliyor...`
-                : '🌐 Tüm Dillere Otomatik Çevir (EN · FR · DE · JA)'}
+                : '🌐 Tüm Dillere Otomatik Çevir (EN · FR · DE)'}
             </button>
             {translating && (
               <div className="translate-progress">
@@ -362,18 +361,6 @@ const AdminProductForm = () => {
           <div className="admin-field admin-field--full">
             <label>Beschreibung (DE) 🇩🇪 <small style={{ fontWeight: 400, color: '#64748b' }}>— Almanca</small></label>
             <textarea value={form.description_de || ''} onChange={set('description_de')} rows={6} placeholder="Produktbeschreibung auf Deutsch..." />
-          </div>
-
-          {/* Başlık JA */}
-          <div className="admin-field admin-field--full">
-            <label>タイトル (JA) 🇯🇵 <small style={{ fontWeight: 400, color: '#64748b' }}>— Japonca</small></label>
-            <input value={form.title_ja || ''} onChange={set('title_ja')} placeholder="製品名（日本語）" />
-          </div>
-
-          {/* Açıklama JA */}
-          <div className="admin-field admin-field--full">
-            <label>説明 (JA) 🇯🇵 <small style={{ fontWeight: 400, color: '#64748b' }}>— Japonca</small></label>
-            <textarea value={form.description_ja || ''} onChange={set('description_ja')} rows={6} placeholder="製品説明（日本語）..." />
           </div>
 
           {/* Görseller */}

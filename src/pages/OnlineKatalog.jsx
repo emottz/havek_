@@ -15,14 +15,12 @@ const CAT_LABEL = {
   en: { simulator: 'Simulators',   atolye: 'Workshop Training Sets', 'ata-chapter': 'ATA Chapter Based Sets'   },
   fr: { simulator: 'Simulateurs',  atolye: "Ensembles d'atelier",    'ata-chapter': 'Ensembles ATA Chapter'    },
   de: { simulator: 'Simulatoren',  atolye: 'Werkstatt-Trainingssets', 'ata-chapter': 'ATA-Kapitel-Sets'        },
-  ja: { simulator: 'シミュレーター', atolye: 'ワークショップ訓練セット', 'ata-chapter': 'ATAチャプターセット'       },
 };
 const CAT_BADGE = {
   tr: { simulator: 'Simülatör',  atolye: 'Atölye Seti',   'ata-chapter': 'ATA Chapter' },
   en: { simulator: 'Simulator',  atolye: 'Workshop Set',   'ata-chapter': 'ATA Chapter' },
   fr: { simulator: 'Simulateur', atolye: "Ensemble d'atelier", 'ata-chapter': 'ATA Chapter' },
   de: { simulator: 'Simulator',  atolye: 'Werkstattset',   'ata-chapter': 'ATA-Kapitel' },
-  ja: { simulator: 'シミュレーター', atolye: 'ワークショップセット', 'ata-chapter': 'ATAチャプター' },
 };
 const CAT_DESC = {
   tr: {
@@ -44,11 +42,6 @@ const CAT_DESC = {
     simulator:     'Simulatorlösungen inklusive Cessna-Typ Kabine und Windkanal.',
     atolye:        'Sicherungsdraht, Abdichtung, Rohrleitung, EWIS und Niet-Anwendungen.',
     'ata-chapter': 'Trainingssets für Hydraulik-, Kraftstoff-, Pneumatik-, Elektrik- und Sauerstoffsysteme.',
-  },
-  ja: {
-    simulator:     'セスナ型コックピットと風洞を含むシミュレーターソリューション。',
-    atolye:        'セーフティワイヤー、シーリング、配管、EWIS、リベット応用。',
-    'ata-chapter': '油圧、燃料、空気圧、電気、酸素システム訓練セット。',
   },
 };
 
@@ -431,12 +424,12 @@ const OnlineKatalog = () => {
             <polyline points="14 2 14 8 20 8"/>
           </svg>
           <span className="katalog-toolbar-title">
-            {lang === 'tr' ? 'HAVEK Ürün Kataloğu' : lang === 'fr' ? 'Catalogue HAVEK' : lang === 'de' ? 'HAVEK Produktkatalog' : lang === 'ja' ? 'HAVEK製品カタログ' : 'HAVEK Product Catalog'}
+            {lang === 'tr' ? 'HAVEK Ürün Kataloğu' : lang === 'fr' ? 'Catalogue HAVEK' : lang === 'de' ? 'HAVEK Produktkatalog' : 'HAVEK Product Catalog'}
           </span>
         </div>
         <div className="katalog-toolbar-right">
           <div className="katalog-lang-toggle">
-            {['tr','en','fr','de','ja'].map(code => (
+            {['tr','en','fr','de'].map(code => (
               <button
                 key={code}
                 className={`katalog-lang-btn ${lang === code ? 'active' : ''}`}

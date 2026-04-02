@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   footerText:  { fontSize: 6.5, color: C.muted },
 });
 
-const LOCALE_MAP = { tr: 'tr-TR', en: 'en-GB', fr: 'fr-FR', de: 'de-DE', ja: 'ja-JP' };
+const LOCALE_MAP = { tr: 'tr-TR', en: 'en-GB', fr: 'fr-FR', de: 'de-DE' };
 
 function formatDate(lang) {
   const locale = LOCALE_MAP[lang] || 'en-GB';

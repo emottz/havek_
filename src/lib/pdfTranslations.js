@@ -59,32 +59,11 @@ export const SECTION_TR_TO_DE = {
   'Tüp Depolama Kafesi':          'Rohrlagergestell',
 };
 
-export const SECTION_TR_TO_JA = {
-  'Temel Özellikler':             '主な特長',
-  'Set İçeriği':                  'セット内容',
-  'Yapılabilecek Görevler':       '実施可能なタスク',
-  'Temel Donanımlar':             '主要機器',
-  'İsteğe Bağlı Modüller':       'オプションモジュール',
-  'İsteğe Bağlı Ek Donanımlar':  'オプション付属品',
-  'Bölümler':                     'セクション',
-  'Donanımlar':                   '機器',
-  'Yangın Söndürme Sistemi':      '消火システム',
-  'Yangın Algılama Sistemi':      '火災検知システム',
-  'Temel Çanta İçeriği':         'ベーシックバッグ内容',
-  'Özellikler':                   '仕様',
-  'Teknik Özellikler':            '技術仕様',
-  'Hizmet Kapsamı':               'サービス範囲',
-  'Seviyeler':                    'レベル',
-  'Pafta, Kılavuz ve Helicoil Seti': 'ダイス、タップ & ヘリコイルセット',
-  'Tüp Depolama Kafesi':          'チューブ保管ケージ',
-};
-
 // Tüm diller için section çeviri haritası
 export const SECTION_TRANSLATIONS = {
   en: SECTION_TR_TO_EN,
   fr: SECTION_TR_TO_FR,
   de: SECTION_TR_TO_DE,
-  ja: SECTION_TR_TO_JA,
 };
 
 export const CATEGORY_EN = {
@@ -98,7 +77,6 @@ export const CATEGORY_LABELS = {
   en: { atolye: 'Workshop Training Set', 'ata-chapter': 'ATA Chapter Based', simulator: 'Simulator' },
   fr: { atolye: "Ensemble d'atelier", 'ata-chapter': 'ATA Chapter', simulator: 'Simulateur' },
   de: { atolye: 'Werkstattset', 'ata-chapter': 'ATA-Kapitel', simulator: 'Simulator' },
-  ja: { atolye: 'ワークショップセット', 'ata-chapter': 'ATAチャプター', simulator: 'シミュレーター' },
 };
 
 export const UI_TEXT = {
@@ -153,18 +131,5 @@ export const UI_TEXT = {
     contactLabel:   'Angebot / Info',
     footerNote:     'Dieses Dokument dient Informationszwecken. Spezifikationen können sich ändern.',
     footerDate:     'Erstellt am',
-  },
-  ja: {
-    docType:        '技術製品シート',
-    docTypeLabel:   '文書タイプ',
-    brandSub:       '航空訓練機器',
-    imageTitle:     '製品画像',
-    compliance:     '規格適合',
-    complianceVal:  'EASA / FAA / SHGM',
-    customLabel:    'カスタマイズ',
-    customVal:      '要件に応じて構成可能',
-    contactLabel:   '見積もり / 情報',
-    footerNote:     'この文書は情報提供を目的としています。仕様は変更される場合があります。',
-    footerDate:     '作成日',
   },
 };
