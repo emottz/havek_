@@ -8,7 +8,6 @@ const LANGS = [
   { code: 'en', label: 'English', flag: '🇬🇧' },
   { code: 'fr', label: 'Français', flag: '🇫🇷' },
   { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
-  { code: 'ja', label: '日本語',   flag: '🇯🇵' },
 ];
 
 const Navbar = () => {
