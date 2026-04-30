@@ -231,14 +231,17 @@ const AdminProductForm = () => {
     let result
     if (isEdit) {
       const { id: _id, created_at, ...rest } = payload
-      result = await supabase.from('products').update(rest).eq('id', id)
+      result = await supabase.from('products').update(rest).eq('id', id).select()
     } else {
       const { created_at, ...rest } = payload
-      result = await supabase.from('products').insert(rest)
+      result = await supabase.from('products').insert(rest).select()
     }
 
     if (result.error) {
       setError(result.error.message)
+      setSaving(false)
+    } else if (isEdit && (!result.data || result.data.length === 0)) {
+      setError('Kayıt güncellenemedi. Supabase RLS politikasını veya ürün ID\'sini kontrol edin.')
       setSaving(false)
     } else {
       navigate('/admin/urunler')
