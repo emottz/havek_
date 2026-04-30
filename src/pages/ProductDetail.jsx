@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { ArrowLeft, Package, Layout, Camera, AlertCircle, FileDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { pdf } from '@react-pdf/renderer';
@@ -10,9 +10,13 @@ import { SkeletonProductDetail } from '../components/Skeleton';
 import { TechnicalSheet } from '../components/TechnicalSheet';
 import { useLanguage } from '../context/LanguageContext';
 import './ProductDetail.css';
+import SEO from '../components/SEO';
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const location = useLocation();
+  const backTo = location.state?.from || '/ata-chapter-egitim-setleri';
+  const backLabel = location.state?.fromLabel;
   const { product, loading, error } = useProduct(id);
   const { settings } = useSiteSettings();
   const email = settings.email || 'info@havek.com.tr';
@@ -72,7 +76,7 @@ const ProductDetail = () => {
         <AlertCircle size={64} color="#dc3545" />
         <h2>{t('pd.notFound.title')}</h2>
         <p>{t('pd.notFound.desc')}</p>
-        <Link to="/egitim-setleri" className="btn-back">
+        <Link to={backTo} className="btn-back">
           <ArrowLeft size={20} /> {t('pd.notFound.back')}
         </Link>
       </div>
@@ -82,11 +86,39 @@ const ProductDetail = () => {
   const displayTitle = (lang !== 'tr' && product[`title_${lang}`]) ? product[`title_${lang}`] : product.title;
   const displayDesc = (lang !== 'tr' && product[`description_${lang}`]) ? product[`description_${lang}`] : product.description;
 
+  const seoTitle = displayTitle ? `${displayTitle} — Havacılık Eğitim Seti` : 'Eğitim Seti Detayı';
+  const seoDesc = displayDesc
+    ? displayDesc.replace(/<[^>]+>/g, '').substring(0, 155)
+    : 'HAVEK havacılık eğitim seti ürün detayı. EASA/FAA/SHGM uyumlu eğitim ekipmanları.';
+  const seoImage = product.images?.[0] ?? undefined;
+
   return (
     <div className="product-detail-page">
+      <SEO
+        title={seoTitle}
+        description={seoDesc}
+        canonical={`/egitim-seti/${id}`}
+        image={seoImage}
+        type="product"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": displayTitle,
+          "description": seoDesc,
+          "image": seoImage,
+          "brand": { "@type": "Brand", "name": "HAVEK" },
+          "offers": {
+            "@type": "Offer",
+            "url": `https://havek.tr/egitim-seti/${id}`,
+            "priceCurrency": "TRY",
+            "availability": "https://schema.org/InStock",
+            "seller": { "@type": "Organization", "name": "HAVEK" }
+          }
+        }}
+      />
       <div className="container">
         <nav className="breadcrumb">
-          <Link to="/egitim-setleri">{t('pd.breadcrumb')}</Link>
+          <Link to={backTo}>{backLabel || t('pd.breadcrumb')}</Link>
           <span className="separator">/</span>
           <span className="current">{displayTitle}</span>
         </nav>

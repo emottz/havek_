@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
 import { useProducts } from '../hooks/useProducts';
 import { useLanguage } from '../context/LanguageContext';
 import './HavacılikCozumleri.css';
+import SEO from '../components/SEO';
 
 const SOLUTION_ICONS = {
   atolye: (
@@ -115,6 +116,11 @@ const HavacılikCozumleri = () => {
 
   return (
     <div className="cozumler-page">
+      <SEO
+        title="Havacılık Çözümleri — Uçtan Uca Eğitim Ekipmanı & Laboratuvar Kurulumu"
+        description="Havacılık bakım teknisyeni yetiştiren kurumlar için kapsamlı çözümler. Atölye setleri, sistem simülatörleri, özel üretim ve anahtar teslim laboratuvar kurulumu. HAVEK ile havacılık eğitimini dönüştürün."
+        canonical="/havacilik-cozumleri"
+      />
 
       <section className="cozumler-hero">
         <div className="container">
@@ -199,7 +205,7 @@ const HavacılikCozumleri = () => {
             </div>
             <div className="cozumler-featured-grid">
               {featured.map(p => (
-                <Link key={p.id} to={`/egitim-seti/${p.id}`} className="atolye-card-link">
+                <Link key={p.id} to={`/egitim-seti/${p.id}`} state={{ from: '/havacilik-cozumleri', fromLabel: 'Havacılık Çözümleri' }} className="atolye-card-link">
                   <article className="atolye-card">
                     <div className="atolye-card__image-wrap">
                       {p.images?.[0] ? (

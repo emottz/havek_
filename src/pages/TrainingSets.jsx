@@ -6,6 +6,7 @@ import { SkeletonCard } from '../components/Skeleton';
 import { useLanguage } from '../context/LanguageContext';
 import './TrainingSets.css';
 import './AtolyeEgitimSetleri.css';
+import SEO from '../components/SEO';
 
 const TrainingSets = () => {
   const { products, loading } = useProducts({ category: 'ata-chapter' });
@@ -14,6 +15,11 @@ const TrainingSets = () => {
 
   return (
     <div className="training-sets-page">
+      <SEO
+        title="ATA Chapter Bazlı Eğitim Setleri — Sistem Odaklı Havacılık Eğitimi"
+        description="Uluslararası ATA chapter standartlarına uygun modüler sistem eğitim setleri. Hidrolik, yakıt, pnömatik, elektrik, oksijen ve aviyonik sistemler. Havacılık bakım teknisyeni eğitimi için tasarlandı."
+        canonical="/ata-chapter-egitim-setleri"
+      />
       <section className="video-highlight container" style={{ paddingTop: '100px' }}>
         <VideoSection
           url="https://www.youtube.com/watch?v=UkpCA2NMpvU"
@@ -36,7 +42,7 @@ const TrainingSets = () => {
         ) : (
         <div className="atolye-grid">
           {products.map((product) => (
-            <Link to={`/egitim-seti/${product.id}`} key={product.id} className="atolye-card-link">
+            <Link to={`/egitim-seti/${product.id}`} state={{ from: '/ata-chapter-egitim-setleri', fromLabel: 'ATA Chapter Eğitim Setleri' }} key={product.id} className="atolye-card-link">
               <article className="atolye-card">
                 <div className="atolye-card__image-wrap">
                   {product.images && product.images.length > 0 ? (

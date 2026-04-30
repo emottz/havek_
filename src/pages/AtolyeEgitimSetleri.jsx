@@ -4,6 +4,7 @@ import { useProducts } from '../hooks/useProducts';
 import { SkeletonCard } from '../components/Skeleton';
 import { useLanguage } from '../context/LanguageContext';
 import './AtolyeEgitimSetleri.css';
+import SEO from '../components/SEO';
 
 const AtolyeEgitimSetleri = () => {
   const { products, loading } = useProducts({ category: 'atolye' });
@@ -12,7 +13,11 @@ const AtolyeEgitimSetleri = () => {
 
   return (
     <div className="atolye-page">
-
+      <SEO
+        title="Atölye Eğitim Setleri — Havacılık Bakım Teknisyeni Eğitim Düzenekleri"
+        description="Gerçek uçak komponentleriyle donatılmış atölye eğitim setleri. EWIS, emniyet teli, perçinleme, contalama ve borulama gibi temel bakım becerilerini geliştiren düzenekler. HAVEK üretimi."
+        canonical="/atolye-egitim-setleri"
+      />
       <section className="atolye-hero">
         <div className="container">
           <p className="atolye-hero__label">{t('atolye.label')}</p>
@@ -31,6 +36,7 @@ const AtolyeEgitimSetleri = () => {
           {products.map((product) => (
             <Link
               to={`/egitim-seti/${product.id}`}
+              state={{ from: '/atolye-egitim-setleri', fromLabel: 'Atölye Eğitim Setleri' }}
               key={product.id}
               className="atolye-card-link"
             >

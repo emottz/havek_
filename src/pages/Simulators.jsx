@@ -6,6 +6,7 @@ import { SkeletonCard } from '../components/Skeleton';
 import { useLanguage } from '../context/LanguageContext';
 import './TrainingSets.css';
 import './AtolyeEgitimSetleri.css';
+import SEO from '../components/SEO';
 
 const Simulators = () => {
   const { products, loading } = useProducts({ category: 'simulator' });
@@ -14,6 +15,11 @@ const Simulators = () => {
 
   return (
     <div className="placeholder-page">
+      <SEO
+        title="Uçuş Simülatörleri — EASA/FAA/SHGM Uyumlu Simülatör Çözümleri"
+        description="HAVEK uçuş simülatörleri: EASA, FAA ve SHGM standartlarına uyumlu, modüler ve ölçeklenebilir simülatör sistemleri. Pilot eğitimi için profesyonel simülatör çözümleri."
+        canonical="/simulatorler"
+      />
       <section className="video-highlight container" style={{ paddingTop: '100px' }}>
         <VideoSection
           url="https://www.youtube.com/watch?v=QmPlSKByVhs"
@@ -36,7 +42,7 @@ const Simulators = () => {
         ) : (
           <div className="atolye-grid">
             {products.map((product) => (
-              <Link to={`/egitim-seti/${product.id}`} key={product.id} className="atolye-card-link">
+              <Link to={`/egitim-seti/${product.id}`} state={{ from: '/simulatorler', fromLabel: 'Simülatörler' }} key={product.id} className="atolye-card-link">
                 <article className="atolye-card">
                   <div className="atolye-card__image-wrap">
                     {product.images && product.images.length > 0 ? (

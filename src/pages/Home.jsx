@@ -7,6 +7,7 @@ import { useProducts } from '../hooks/useProducts';
 import { SkeletonCard } from '../components/Skeleton';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import SEO from '../components/SEO';
 
 const VISIBLE = 3;
 
@@ -59,6 +60,21 @@ const Home = () => {
 
   return (
     <div className="home-page">
+      <SEO
+        title="Havacılık Eğitim Ekipmanları, Simülatör & ATA Eğitim Setleri"
+        description="HAVEK, EASA/FAA/SHGM uyumlu havacılık eğitim ekipmanları üreticisi. Uçuş simülatörleri, ATA chapter bazlı sistem eğitim setleri, atölye düzenekleri ve pilot eğitim çözümleri. Anahtar teslim laboratuvar kurulumu."
+        canonical="/"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "HAVEK Havacılık Eğitim Ekipmanları",
+          "url": "https://havek.tr",
+          "logo": "https://havek.tr/instalogo-siyah.png",
+          "description": "EASA/FAA/SHGM uyumlu havacılık eğitim ekipmanları, uçuş simülatörleri ve ATA chapter bazlı eğitim seti üreticisi.",
+          "address": { "@type": "PostalAddress", "addressCountry": "TR" },
+          "contactPoint": { "@type": "ContactPoint", "contactType": "sales", "url": "https://havek.tr/iletisim" }
+        }}
+      />
       <section className="hero-section">
         <HeroSlider />
       </section>
@@ -141,7 +157,7 @@ const Home = () => {
                   ))
                 : featuredProducts.map((product) => (
                     <div key={product.id} className="featured-carousel__slide">
-                      <Link to={`/egitim-seti/${product.id}`} className="atolye-card-link">
+                      <Link to={`/egitim-seti/${product.id}`} state={{ from: '/', fromLabel: 'Ana Sayfa' }} className="atolye-card-link">
                         <article className="atolye-card">
                           <div className="atolye-card__image-wrap">
                             <img src={product.images[0]} alt={pt(product, 'title')} className="atolye-card__image" />
@@ -186,7 +202,7 @@ const Home = () => {
           {loading
             ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
             : featuredProducts.slice(0, 6).map((product) => (
-                <Link key={product.id} to={`/egitim-seti/${product.id}`} className="atolye-card-link">
+                <Link key={product.id} to={`/egitim-seti/${product.id}`} state={{ from: '/', fromLabel: 'Ana Sayfa' }} className="atolye-card-link">
                   <article className="atolye-card">
                     <div className="atolye-card__image-wrap">
                       <img src={product.images[0]} alt={pt(product, 'title')} className="atolye-card__image" />
