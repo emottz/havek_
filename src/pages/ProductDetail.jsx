@@ -24,6 +24,8 @@ const ProductDetail = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [pdfLoading, setPdfLoading] = useState(false);
 
+  const isVideoUrl = (url) => /\.(mp4|webm|ogg|mov)(\?|$)/i.test(url);
+
   const fetchImageAsDataUrl = async (src) => {
     const url = src.startsWith('/') ? `${window.location.origin}${src}` : src;
     try {
@@ -42,7 +44,7 @@ const ProductDetail = () => {
   const handleDownloadPdf = async (pdfLang = 'tr') => {
     setPdfLoading(pdfLang);
     try {
-      const rawImages = (product.images || []).filter(Boolean).slice(0, 3);
+      const rawImages = (product.images || []).filter(img => img && !isVideoUrl(img)).slice(0, 3);
       const [resolvedImages, logoDataUrl] = await Promise.all([
         Promise.all(rawImages.map(fetchImageAsDataUrl)).then(r => r.filter(Boolean)),
         fetchImageAsDataUrl('/Beyaz_logo.png'),
@@ -90,7 +92,7 @@ const ProductDetail = () => {
   const seoDesc = displayDesc
     ? displayDesc.replace(/<[^>]+>/g, '').substring(0, 155)
     : 'HAVEK havacılık eğitim seti ürün detayı. EASA/FAA/SHGM uyumlu eğitim ekipmanları.';
-  const seoImage = product.images?.[0] ?? undefined;
+  const seoImage = product.images?.find(img => !isVideoUrl(img)) ?? undefined;
 
   return (
     <div className="product-detail-page">
@@ -129,16 +131,28 @@ const ProductDetail = () => {
               <div className="gallery-main">
                 <div className="main-image-container">
                   <AnimatePresence mode="wait">
-                    <motion.img
+                    <motion.div
                       key={activeIndex}
-                      src={product.images[activeIndex]}
-                      alt={displayTitle}
-                      className="active-main-image"
+                      className="active-main-media"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 1.05 }}
                       transition={{ duration: 0.3 }}
-                    />
+                    >
+                      {isVideoUrl(product.images[activeIndex]) ? (
+                        <video
+                          src={product.images[activeIndex]}
+                          controls
+                          className="active-main-video"
+                        />
+                      ) : (
+                        <img
+                          src={product.images[activeIndex]}
+                          alt={displayTitle}
+                          className="active-main-image"
+                        />
+                      )}
+                    </motion.div>
                   </AnimatePresence>
                 </div>
                 {product.images.length > 1 && (
@@ -149,7 +163,15 @@ const ProductDetail = () => {
                               className={`gallery-item ${idx === activeIndex ? 'active' : ''}`}
                               onClick={() => setActiveIndex(idx)}
                             >
-                                <img src={img} alt={`${displayTitle} - ${idx + 1}`} />
+                                {isVideoUrl(img) ? (
+                                  <div className="gallery-item__video-thumb">
+                                    <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+                                      <polygon points="5,3 19,12 5,21" />
+                                    </svg>
+                                  </div>
+                                ) : (
+                                  <img src={img} alt={`${displayTitle} - ${idx + 1}`} />
+                                )}
                             </div>
                         ))}
                     </div>

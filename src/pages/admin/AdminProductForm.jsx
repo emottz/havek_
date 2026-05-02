@@ -180,7 +180,9 @@ const AdminProductForm = () => {
     })
   }
 
-  // Görsel yükleme: dosya seçilince çalışır
+  const isVideoUrl = (url) => /\.(mp4|webm|ogg|mov)(\?|$)/i.test(url)
+
+  // Görsel/video yükleme: dosya seçilince çalışır
   const handleFileChange = async (e) => {
     const files = Array.from(e.target.files)
     if (!files.length) return
@@ -375,7 +377,14 @@ const AdminProductForm = () => {
               <div className="image-manager">
                 {form.images.map((url, idx) => (
                   <div key={idx} className="image-manager__item">
-                    <img src={url} alt={`Görsel ${idx + 1}`} className="image-manager__thumb" />
+                    {isVideoUrl(url) ? (
+                      <div className="image-manager__video-thumb">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><polygon points="5,3 19,12 5,21" /></svg>
+                        <span>Video</span>
+                      </div>
+                    ) : (
+                      <img src={url} alt={`Görsel ${idx + 1}`} className="image-manager__thumb" />
+                    )}
                     <div className="image-manager__controls">
                       <button type="button" onClick={() => moveImage(idx, -1)} disabled={idx === 0} title="Sola taşı">◀</button>
                       <span className="image-manager__order">{idx + 1}</span>
@@ -400,8 +409,8 @@ const AdminProductForm = () => {
                   <svg viewBox="0 0 24 24" fill="none" className="upload-icon">
                     <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span>Görsel yüklemek için tıklayın</span>
-                  <small>JPEG, PNG, WebP, GIF — max 10MB — çoklu seçim desteklenir</small>
+                  <span>Görsel veya video yüklemek için tıklayın</span>
+                  <small>Görsel: JPEG, PNG, WebP, GIF (max 10MB) · Video: MP4, WebM (max 500MB)</small>
                 </>
               )}
             </div>
@@ -409,7 +418,7 @@ const AdminProductForm = () => {
             <input
               ref={fileInputRef}
               type="file"
-              accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
+              accept="image/jpeg,image/jpg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime"
               multiple
               onChange={handleFileChange}
               style={{ display: 'none' }}

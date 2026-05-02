@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 
-const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif']
-const MAX_SIZE_MB = 10
-const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024
+const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif']
+const ALLOWED_VIDEO_TYPES = ['video/mp4', 'video/webm', 'video/ogg', 'video/quicktime']
+const ALLOWED_TYPES = [...ALLOWED_IMAGE_TYPES, ...ALLOWED_VIDEO_TYPES]
+const MAX_IMAGE_BYTES = 10 * 1024 * 1024   // 10 MB
+const MAX_VIDEO_BYTES = 500 * 1024 * 1024  // 500 MB
 
 export function useImageUpload() {
   const [uploading, setUploading] = useState(false)
@@ -12,13 +14,14 @@ export function useImageUpload() {
   const upload = async (file) => {
     setUploadError('')
 
-    // İstemci tarafı doğrulama
+    const isVideo = file.type.startsWith('video/')
     if (!ALLOWED_TYPES.includes(file.type)) {
-      setUploadError('Sadece JPEG, PNG, WebP veya GIF yüklenebilir.')
+      setUploadError('Sadece JPEG, PNG, WebP, GIF veya MP4/WebM yüklenebilir.')
       return null
     }
-    if (file.size > MAX_SIZE_BYTES) {
-      setUploadError(`Görsel ${MAX_SIZE_MB}MB'dan küçük olmalıdır.`)
+    const maxBytes = isVideo ? MAX_VIDEO_BYTES : MAX_IMAGE_BYTES
+    if (file.size > maxBytes) {
+      setUploadError(`${isVideo ? 'Video 500MB' : 'Görsel 10MB'}'dan küçük olmalıdır.`)
       return null
     }
 
@@ -51,10 +54,11 @@ export function useImageUpload() {
   }
 
   const remove = async (url) => {
-    // URL'den storage path çıkar
-    const match = url.match(/product-images\/(.+)$/)
+    // URL'den bucket adı ve path çıkar — hem product-images hem products bucket'ını destekler
+    const match = url.match(/\/storage\/v1\/object\/public\/([^/]+)\/(.+)$/)
     if (!match) return
-    await supabase.storage.from('product-images').remove([match[1]])
+    const [, bucket, path] = match
+    await supabase.storage.from(bucket).remove([path])
   }
 
   return { upload, remove, uploading, uploadError, setUploadError }
